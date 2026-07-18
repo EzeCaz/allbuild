@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Brand Book — A New Identity for the Human Side of Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page {
+    size: 720px 1020px;
+    margin: 0;
+}
+:root {
+    --cream: #FFF6EC;
+    --peach: #FFB48A;
+    --coral: #FF7A59;
+    --terracotta: #C66B3D;
+    --charcoal: #2A1F1A;
+    --muted: #6B5849;
+    --line: #E8D5C2;
+    --soft: #FBE7D5;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 720px;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+@media screen {
+    html {
+        height: auto;
+        display: flex;
+        justify-content: center;
+        background: #d9c5b0;
+    }
+    body {
+        margin: 20px auto;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    }
+}
+
+/* ========== COVER ========== */
+.cover {
+    width: 720px;
+    height: 1020px;
+    box-sizing: border-box;
+    break-after: page;
+    overflow: hidden;
+    position: relative;
+    background: var(--cream);
+    padding: 80px 70px 60px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* Decorative band at top — solid coral, doesn't overlap text */
+.cover-band-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--coral);
+}
+.cover-band-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--terracotta);
+}
+/* Cover decoration kept minimal: only top/bottom bands.
+   Text-to-line gap must be ≥ 40px per cover_validate.js. */
+.cover-side-mark {
+    position: absolute;
+    top: 70px;
+    right: 70px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--coral);
+    opacity: 0.92;
+    z-index: 1;
+}
+.cover-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    padding-left: 70px;
+}
+.cover-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 76px;
+    line-height: 0.95;
+    color: var(--charcoal);
+    margin-top: 0;
+    position: relative;
+    z-index: 2;
+    letter-spacing: -1.5px;
+}
+.cover-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--terracotta);
+}
+.cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--muted);
+    max-width: 380px;
+    margin-top: 24px;
+    position: relative;
+    z-index: 2;
+}
+.cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 2;
+}
+.cover-edition {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    line-height: 1.6;
+}
+.cover-edition strong {
+    color: var(--terracotta);
+    font-weight: 600;
+}
+.cover-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal);
+    font-style: italic;
+}
+
+/* ========== MAIN CONTENT ========== */
+.main-content {
+    padding: 60px 65px 50px 65px;
+}
+
+/* Chapter header */
+.chapter-header {
+    break-after: avoid;
+    break-inside: avoid;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+.chapter-header:first-child {
+    margin-top: 0;
+}
+.section-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.05;
+    color: var(--charcoal);
+    letter-spacing: -0.8px;
+    margin: 0 0 30px 0;
+}
+.section-title em {
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 300;
+}
+.divider {
+    width: 40px;
+    height: 3px;
+    background: var(--coral);
+    margin-bottom: 22px;
+}
+
+/* Body text */
+.body-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--charcoal);
+    margin: 0 0 14px 0;
+}
+.body-text strong {
+    font-weight: 600;
+    color: var(--terracotta);
+}
+.lead {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.45;
+    color: var(--charcoal);
+    margin: 0 0 20px 0;
+}
+
+/* Two-column layout */
+.two-col {
+    display: flex;
+    gap: 32px;
+    break-inside: avoid;
+}
+.two-col > div {
+    flex: 1;
+}
+
+/* Pull quote */
+.pull-quote {
+    break-inside: avoid;
+    background: var(--soft);
+    border-left: 4px solid var(--coral);
+    padding: 22px 26px;
+    margin: 18px 0;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--charcoal);
+}
+.pull-quote-cite {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-top: 10px;
+}
+
+/* Personality traits */
+.trait-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 16px 0 8px 0;
+    break-inside: avoid;
+}
+.trait-card {
+    background: var(--soft);
+    padding: 16px 18px;
+    border-radius: 6px;
+    break-inside: avoid;
+}
+.trait-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--terracotta);
+    margin: 0 0 4px 0;
+}
+.trait-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--charcoal);
+    margin: 0;
+}
+
+/* Sound like / Don't sound like */
+.sound-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 12px;
+    break-inside: avoid;
+}
+.sound-col h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--line);
+}
+.sound-col.yes h4 {
+    color: var(--terracotta);
+    border-bottom-color: var(--coral);
+}
+.sound-col.no h4 {
+    color: var(--muted);
+}
+.sound-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sound-col li {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--charcoal);
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--line);
+}
+.sound-col li:last-child {
+    border-bottom: none;
+}
+.sound-col li::before {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    margin-right: 6px;
+}
+.sound-col.yes li::before {
+    content: "+";
+    color: var(--coral);
+}
+.sound-col.no li::before {
+    content: "\2014";
+    color: var(--muted);
+}
+
+/* Color palette */
+.palette-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 8px 0 16px 0;
+    break-inside: avoid;
+}
+.swatch {
+    border-radius: 8px;
+    overflow: hidden;
+    break-inside: avoid;
+}
+.swatch-color {
+    height: 110px;
+}
+.swatch-info {
+    background: var(--cream);
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+}
+.swatch-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--charcoal);
+    margin: 0 0 2px 0;
+}
+.swatch-hex {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--terracotta);
+    margin: 0 0 4px 0;
+}
+.swatch-use {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    line-height: 1.45;
+    color: var(--muted);
+    margin: 0;
+}
+
+.ratio-bar {
+    display: flex;
+    height: 28px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 10px 0 8px 0;
+    break-inside: avoid;
+}
+.ratio-seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+}
+.ratio-legend {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+    break-inside: avoid;
+}
+.ratio-leg-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    line-height: 1.3;
+    color: var(--muted);
+}
+.ratio-leg-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+/* Name candidate page */
+.name-page {
+    break-inside: avoid;
+}
+.name-display {
+    background: var(--soft);
+    padding: 36px 40px 32px 40px;
+    border-radius: 10px;
+    margin-bottom: 22px;
+    position: relative;
+    overflow: hidden;
+}
+.name-display::before {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: var(--coral);
+    border-radius: 50%;
+    top: -50px;
+    right: -50px;
+    opacity: 0.25;
+}
+.name-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.name-word {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--charcoal);
+    margin: 0 0 12px 0;
+    letter-spacing: -1.5px;
+    position: relative;
+    z-index: 2;
+}
+.name-word em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--terracotta);
+}
+.name-pronunciation {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    margin: 0 0 14px 0;
+    position: relative;
+    z-index: 2;
+}
+.name-tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.35;
+    color: var(--terracotta);
+    margin: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.name-rationale {
+    margin: 0 0 18px 0;
+}
+.name-rationale .body-text {
+    margin-bottom: 12px;
+}
+
+.name-meta {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 16px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 14px 18px;
+    break-inside: avoid;
+}
+.meta-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 4px 0;
+}
+.meta-value {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--charcoal);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Typography page */
+.type-specimen {
+    background: var(--soft);
+    border-radius: 10px;
+    padding: 28px 30px;
+    margin-bottom: 18px;
+    break-inside: avoid;
+    display: flex;
+    align-items: center;
+    gap: 26px;
+}
+.type-aa {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 0.9;
+    color: var(--terracotta);
+    flex-shrink: 0;
+}
+.type-aa.inter {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: var(--charcoal);
+}
+.type-info h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--charcoal);
+    margin: 0 0 4px 0;
+}
+.type-info .role {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin: 0 0 8px 0;
+}
+.type-info .sample {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--charcoal);
+    margin: 0;
+}
+.type-info .sample.serif-sample {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.type-scale {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    break-inside: avoid;
+}
+.type-scale th, .type-scale td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--charcoal);
+}
+.type-scale th {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+.type-scale td.role-cell {
+    font-weight: 600;
+    color: var(--terracotta);
+}
+.type-scale td.font-cell {
+    font-family: 'Fraunces', serif;
+    color: var(--charcoal);
+}
+.type-scale td.size-cell {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+/* Use case cards */
+.usecase-card {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--coral);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    break-inside: avoid;
+}
+.usecase-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--charcoal);
+    margin: 0 0 8px 0;
+}
+.usecase-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--charcoal);
+    margin: 0;
+}
+
+/* Next steps */
+.next-steps {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0 0 0;
+    counter-reset: step-counter;
+}
+.next-steps li {
+    counter-increment: step-counter;
+    position: relative;
+    padding: 12px 0 12px 44px;
+    border-bottom: 1px dashed var(--line);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--charcoal);
+    break-inside: avoid;
+}
+.next-steps li:last-child {
+    border-bottom: none;
+}
+.next-steps li::before {
+    content: counter(step-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 12px;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--coral);
+    line-height: 1;
+}
+
+.recommend-card {
+    background: var(--soft);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 12px;
+    break-inside: avoid;
+}
+.recommend-card h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--terracotta);
+    margin: 0 0 6px 0;
+}
+.recommend-card p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--charcoal);
+    margin: 0;
+}
+
+/* Ending page */
+.ending {
+    width: 720px;
+    height: 1020px;
+    box-sizing: border-box;
+    break-before: page;
+    overflow: hidden;
+    position: relative;
+    background: var(--terracotta);
+    padding: 80px 70px 60px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--cream);
+}
+/* Ending decoration — kept fully on-page, in upper-right corner away from text */
+.ending-deco {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+}
+.ending-deco-1 {
+    width: 180px;
+    height: 180px;
+    background: var(--coral);
+    top: 60px;
+    right: 60px;
+    opacity: 0.45;
+}
+.ending-deco-2 {
+    width: 90px;
+    height: 90px;
+    background: var(--peach);
+    top: 200px;
+    right: 130px;
+    opacity: 0.55;
+}
+.ending-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: var(--cream);
+    text-transform: uppercase;
+    opacity: 0.85;
+    position: relative;
+    z-index: 2;
+}
+.ending-big {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 58px;
+    line-height: 1.05;
+    color: var(--cream);
+    margin: 0;
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 2;
+}
+.ending-big strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--peach);
+}
+.ending-foot {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: var(--cream);
+    opacity: 0.75;
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+    <div class="cover-band-top"></div>
+    <div class="cover-band-bottom"></div>
+
+    <div>
+        <div class="cover-tag">Brand Book &nbsp;·&nbsp; Identity Exploration</div>
+    </div>
+
+    <div>
+        <h1 class="cover-title">A new brand<br>for the <em>human</em><br>side of business.</h1>
+        <p class="cover-subtitle">Five name candidates, a warm color palette, and a typography system built for small business owners — not for tech-savvy power users. Designed to feel like a helpful teammate, not a robot.</p>
+    </div>
+
+    <div class="cover-bottom">
+        <div class="cover-edition">
+            <strong>Brand Book</strong><br>
+            Five Name Candidates<br>
+            July 2026 Edition
+        </div>
+        <div class="cover-mark">— a warm start</div>
+    </div>
+</div>
+
+<!-- ============ MAIN CONTENT ============ -->
+<div class="main-content">
+
+    <!-- ============ BRAND PHILOSOPHY ============ -->
+    <div class="chapter-header">
+        <div class="section-tag">01 &nbsp;·&nbsp; Brand Philosophy</div>
+        <h2 class="section-title">Built for the people<br>who <em>actually</em> run businesses.</h2>
+        <div class="divider"></div>
+    </div>
+
+    <p class="lead">This is not a tool for engineers. It is a teammate for the cafe owner closing at 9pm, the salon stylist booking next week, the freelancer juggling five clients, and the family shop passing to a new generation.</p>
+
+    <p class="body-text">Small business owners do not wake up thinking about "AI agents," "orchestration layers," or "context management." They wake up thinking about the orders that need to ship, the customers who need callbacks, and the bills that need paying. They have been sold technology for thirty years that promises to help and mostly adds work — another login, another dashboard, another thing to learn. Our brand must signal, from the first second, that we are different: that we are on their side of the counter, not the other side.</p>
+
+    <p class="body-text">We believe the best technology disappears into the work. A good teammate does not announce themselves every time they do something useful; they just do it, and the day goes a little smoother. So our brand speaks plainly, acts reliably, and shows up warm. We borrow language from how small business owners actually talk — about crews and shifts and regulars and the daily grind — not from how software companies talk about agents and prompts and workflows. The product may be sophisticated. The brand must never feel sophisticated.</p>
+
+    <p class="body-text">Our promise is simple: <strong>we handle the busywork so humans can do the human work.</strong> The conversations, the craft, the judgment calls, the moments that make a small business feel like a place — those stay with the owner. Everything else, the relentless background hum of admin and follow-up and chasing-down, gets picked up by us. That is the whole pitch, and the brand exists to make that pitch legible at a glance.</p>
+
+    <div class="pull-quote">
+        "Technology should feel like a helpful teammate, not a robot overlord. We are not building a chatbot. We are building the warmth behind the work."
+        <span class="pull-quote-cite">— Brand North Star</span>
+    </div>
+
+    <!-- ============ BRAND PERSONALITY ============ -->
+    <div class="chapter-header">
+        <div class="section-tag">02 &nbsp;·&nbsp; Personality &amp; Tone</div>
+        <h2 class="section-title">How the brand<br><em>shows up.</em></h2>
+        <div class="divider"></div>
+    </div>
+
+    <p class="body-text">If the brand were a person, it would be the experienced second-in-command at a small business — the one who has done every job, never loses their temper, remembers every customer's name, and quietly makes sure the day works. Not flashy. Not loud. Just dependable, warm, and unflappable. Every trait below is a checkpoint for any copy, design, or interaction the brand produces.</p>
+
+    <div class="trait-grid">
+        <div class="trait-card">
+            <p class="trait-name">Warm</p>
+            <p class="trait-desc">Greets you like a regular. Never cold, never transactional. Even error messages sound human.</p>
+        </div>
+        <div class="trait-card">
+            <p class="trait-name">Capable</p>
+            <p class="trait-desc">Calm confidence that things will get handled. No false modesty, no overpromising.</p>
+        </div>
+        <div class="trait-card">
+            <p class="trait-name">Optimistic</p>
+            <p class="trait-desc">Believes tomorrow can be a little easier than today. Sees problems as solvable.</p>
+        </div>
+        <div class="trait-card">
+            <p class="trait-name">Plain-spoken</p>
+            <p class="trait-desc">Says "send the invoice" not "execute the billing workflow." Talks like a person.</p>
+        </div>
+        <div class="trait-card">
+            <p class="trait-name">Trustworthy</p>
+            <p class="trait-desc">Does what it says. Admits when it isn't sure. Asks before doing anything risky.</p>
+        </div>
+        <div class="trait-card">
+            <p class="trait-name">Cheerful, not chirpy</p>
+            <p class="trait-desc">A quiet good mood. Never perky, never fake-enthusiastic, never corporate-fun.</p>
+        </div>
+    </div>
+
+    <div class="sound-grid">
+        <div class="sound-col yes">
+            <h4>We Sound Like</h4>
+            <ul>
+                <li>"Good morning. Three follow-ups done, two waiting on your sign-off."</li>
+                <li>"Want me to draft a reply to that customer, or are you handling it?"</li>
+                <li>"That invoice is queued for Tuesday. I'll let you know when it sends."</li>
+                <li>"Heads up — your weekly numbers look better than last week."</li>
+                <li>"I noticed a conflict in the schedule. Here are two ways to fix it."</li>
+            </ul>
+        </div>
+        <div class="sound-col no">
+            <h4>We Don't Sound Like</h4>
+            <ul>
+                <li>"Agent Orchestrator has successfully executed 12 workflow steps."</li>
+                <li>"Leverage AI to unlock synergies across your enterprise stack."</li>
+                <li>"SYSTEM INITIALIZED. AWAITING COMMAND INPUT."</li>
+                <li>"Maximize productivity with our cutting-edge agent workforce."</li>
+                <li>"Click here to deploy your autonomous digital workforce."</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ============ COLOR PALETTE ============ -->
+    <div class="chapter-header">
+        <div class="section-tag">03 &nbsp;·&nbsp; Color Palette</div>
+        <h2 class="section-title">Sunset Coral —<br>warm, <em>human</em>, optimistic.</h2>
+        <div class="divider"></div>
+    </div>
+
+    <p class="body-text">The palette is deliberately warm — built around the colors of an evening sunset, a terracotta pot, a peach on a kitchen counter. There is no blue anywhere. Blue is the color of corporate dashboards, of technology products, of cold efficiency. We are none of those things. Cream carries 60% of every page so the brand always feels light and approachable; coral and terracotta provide the punctuation; a warm charcoal handles the text without ever going to pure black, which would feel harsh.</p>
+
+    <div class="palette-grid">
+        <div class="swatch">
+            <div class="swatch-color" style="background: #FFF6EC; border: 1px solid #E8D5C2;"></div>
+            <div class="swatch-info">
+                <p class="swatch-name">Cream</p>
+                <p class="swatch-hex">#FFF6EC</p>
+                <p class="swatch-use">Primary background. 60% of every surface. Sets the warm, paper-like base.</p>
+            </div>
+        </div>
+        <div class="swatch">
+            <div class="swatch-color" style="background: #FFB48A;"></div>
+            <div class="swatch-info">
+                <p class="swatch-name">Peach</p>
+                <p class="swatch-hex">#FFB48A</p>
+                <p class="swatch-use">Secondary fills. Cards, soft highlights, illustrations. 20% of surface.</p>
+            </div>
+        </div>
+        <div class="swatch">
+            <div class="swatch-color" style="background: #FF7A59;"></div>
+            <div class="swatch-info">
+                <p class="swatch-name">Coral</p>
+                <p class="swatch-hex">#FF7A59</p>
+                <p class="swatch-use">Primary accent. CTAs, key data, brand marks. 10% of surface.</p>
+            </div>
+        </div>
+        <div class="swatch">
+            <div class="swatch-color" style="background: #C66B3D;"></div>
+            <div class="swatch-info">
+                <p class="swatch-name">Terracotta</p>
+                <p class="swatch-hex">#C66B3D</p>
+                <p class="swatch-use">Deep accent. Headlines, italic emphasis. 5% of surface.</p>
+            </div>
+        </div>
+    </div>
+
+    <p class="body-text">Two neutrals round out the system. <strong>Warm Charcoal (#2A1F1A)</strong> is used for all body text — never pure black, which would feel cold against the cream background. <strong>Sand Line (#E8D5C2)</strong> handles borders, dividers, and quiet structural elements without competing for attention. Together these six colors form a tight, cohesive family. No grays. No blues. No neon. Every visual the brand produces should feel like it belongs on a hand-printed menu or a craft bakery's packaging — warm, intentional, and made by people.</p>
+
+    <div class="ratio-bar" aria-label="Color usage ratio: cream 60%, peach 20%, coral 10%, terracotta 5%, charcoal 5%">
+        <div class="ratio-seg" style="background: #FFF6EC; border-right: 1px solid #E8D5C2; width: 60%;"></div>
+        <div class="ratio-seg" style="background: #FFB48A; width: 20%;"></div>
+        <div class="ratio-seg" style="background: #FF7A59; width: 10%;"></div>
+        <div class="ratio-seg" style="background: #C66B3D; width: 5%;"></div>
+        <div class="ratio-seg" style="background: #2A1F1A; width: 5%;"></div>
+    </div>
+    <div class="ratio-legend">
+        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #FFF6EC; border: 1px solid #E8D5C2;"></span>Cream — base</div>
+        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #FFB48A;"></span>Peach — fill</div>
+        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #FF7A59;"></span>Coral — accent</div>
+        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #C66B3D;"></span>Terra — depth</div>
+        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #2A1F1A;"></span>Charcoal — text</div>
+    </div>
+
+    <!-- ============ NAME 1 — HEARTHWORK ============ -->
+    <div class="chapter-header">
+        <div class="section-tag">04 &nbsp;·&nbsp; Name Candidate 01</div>
+        <h2 class="section-title">A name built from<br>warmth and <em>work.</em></h2>
+        <div class="divider"></div>
+    </div>
+
+    <div class="name-page">
+        <div class="name-display">
+            <div class="name-number">Candidate 01</div>
+            <h3 class="name-word">Hearthwork</h3>
+            <p class="name-pronunciation">Pronounced: /ˈhɑːrθ.wɜːrk/ &nbsp;·&nbsp; "HARTH-wurk"</p>
+            <p class="name-tagline">"The warmth behind your work."</p>
+        </div>
+
+        <div class="name-rationale">
+            <p class="body-text"><strong>Etymology and emotional meaning.</strong> A hearth is the warm center of a home — the fireplace, the kitchen, the place where family and guests gather. For thousands of years it has symbolized hospitality, belonging, and the steady source of warmth that makes a place feel alive. By pairing it with "work," the name makes a quiet claim: that the labor of running a business deserves the same warmth, the same sense of home, that a hearth provides. The compound feels old and grounded, almost like a word that should already exist.</p>
+
+            <p class="body-text"><strong>Why it fits small business owners.</strong> Every small business has a hearth — the counter where regulars lean, the chair where the owner sits at 6am, the table where the day's plan gets sketched. "Hearthwork" honors that physical, tactile, human reality instead of abstracting it away into "operations" or "process." It tells the owner: we see that your business is not just a business, it is a place with warmth at its center, and our job is to protect that warmth by carrying the load around it.</p>
+
+            <p class="body-text"><strong>Brand potential.</strong> The name is distinctive without being precious, memorable without being clever, and evocative without leaning on any technology trope. It opens a rich visual world — embers, kiln-fired ceramics, the color of firelight on a wall — that maps cleanly onto the Sunset Coral palette. It also extends gracefully into product language: "the hearth" can become the dashboard, "tending the hearth" can become the act of running the business, and "hearthmates" can become what we call the helpful agents.</p>
+        </div>
+
+        <div class="name-meta">
+            <div>
+                <p class="meta-label">Vibe</p>
+                <p class="meta-value">Warm · Grounded · Trustworthy</p>
+            </div>
+            <div>
+                <p class="meta-label">Best For</p>
+                <p class="meta-value">Owners who think of their business as a place — cafes, salons, family shops, hospitality, local services.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ NAME 2 — MANYHANDS ============ -->
+    <div class="chapter-header">
+        <div class="section-tag">05 &nbsp;·&nbsp; Name Candidate 02</div>
+        <h2 class="section-title">A familiar phrase,<br><em>reframed.</em></h2>
+        <div class="divider"></div>
+    </div>
+
+    <div class="name-page">
+        <div class="name-display">
+            <div class="name-number">Candidate 02</div>
+            <h3 class="name-word">Manyhands</h3>
+            <p class="name-pronunciation">Pronounced: /ˈmɛ.ni.hændz/ &nbsp;·&nbsp; "MEN-ee-handz"</p>
+            <p class="name-tagline">"Many hands. One heartbeat."</p>
+        </div>
+
+        <div class="name-rationale">
+            <p class="body-text"><strong>Origin and instant familiarity.</strong> "Many hands make light work" is one of the oldest English-language proverbs — printed in collections as early as the 1500s, but probably spoken for centuries before that. Every English speaker already knows it. By compressing the proverb into a single compound word, the name borrows all that accumulated meaning without any explanation needed. The first time someone hears "Manyhands," they already understand what the product does: it brings more hands to the work so the load gets lighter.</p>
+
+            <p class="body-text"><strong>Captures the multi-agent concept without saying "AI."</strong> This is the name's quiet superpower. The platform's core innovation is that it runs many specialized agents at once — but saying "multi-agent" to a small business owner is meaningless at best and intimidating at worst. "Manyhands" delivers the same idea in human, physical, almost old-world language. It feels like a crew of helpers, a circle of friends showing up to help with the harvest, a neighborhood pitching in. The technology disappears; the help is what stays visible.</p>
+
+            <p class="body-text"><strong>Sound, feel, and brand stretch.</strong> The word has a sturdy, working-class rhythm — three syllables, stresses on first and third, easy to shout across a room. It feels handmade rather than engineered. It also stretches naturally into a product vocabulary: each agent can be called "a hand," groups of agents can be "crews," and the dashboard can be "the bench" where everyone reports in. The whole brand world builds itself from one familiar phrase.</p>
+        </div>
+
+        <div class="name-meta">
+            <div>
+                <p class="meta-label">Vibe</p>
+                <p class="meta-value">Sturdy · Friendly · Plain-spoken</p>
+            </div>
+            <div>
+                <p class="meta-label">Best For</p>
+                <p class="meta-value">Owners who would never describe themselves as "tech people" — trades, retail, services, contractors, solo operators.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ NAME 3 — KINDRED ============ -->
+    <div class="chapter-header">
+        <div class="section-tag">06 &nbsp;·&nbsp; Name Candidate 03</div>
+        <h2 class="section-title">One word,<br>one <em>promise.</em></h2>
+        <div class="divider"></div>
+    </div>
+
+    <div class="name-page">
+        <div class="name-display">
+            <div class="name-number">Candidate 03</div>
+            <h3 class="name-word">Kindred</h3>
+            <p class="name-pronunciation">Pronounced: /ˈkɪn.drəd/ &nbsp;·&nbsp; "KIN-drid"</p>
+            <p class="name-tagline">"Working alongside you."</p>
+        </div>
+
+        <div class="name-rationale">
+            <p class="body-text"><strong>Meaning and emotional resonance.</strong> "Kindred" comes from Old English <em>cyndrēd</em> — literally "kin-rid," a riding or family group bound by blood. Today it carries two intertwined meanings: a family-like bond, and the deeper idea of kindred spirits, people who simply understand each other without effort. For a small business owner, who often works long hours in isolation and carries decisions no one else can see, the promise of a kindred presence is enormous. This name says, in one word: you have someone in your corner who gets it.</p>
+
+            <p class="body-text"><strong>Why a single word wins here.</strong> Most brand names in this category are compounds, portmanteaus, or invented words — they shout for attention and try to explain themselves. "Kindred" does the opposite. It is one word, already in the dictionary, already carrying a positive emotional charge. It does not need to be decoded. The first time someone hears it, they feel something before they think anything, and that feeling — of partnership, of being understood — is exactly what the product delivers.</p>
+
+            <p class="body-text"><strong>Elegance and restraint.</strong> The name pairs beautifully with the warm palette: terracotta italics on cream feel almost like a handwritten letter, and "Kindred" set in Fraunces has the humanist warmth of a well-set book. It is also flexible enough to grow with the product. "Kindred for retail," "Kindred for services," "Kindred at home" — every extension sounds natural, never forced. And it gives the brand a clear voice: the kind of presence that shows up quietly, does the work, and never asks for credit.</p>
+        </div>
+
+        <div class="name-meta">
+            <div>
+                <p class="meta-label">Vibe</p>
+                <p class="meta-value">Elegant · Quiet · Loyal</p>
+            </div>
+            <div>
+                <p class="meta-label">Best For</p>
+                <p class="meta-value">Owners who value craft and relationships — boutique services, design studios, consultants, wellness practitioners.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ NAME 4 — DAYBREAK ============ -->
+    <div class="chapter-header">
+        <div class="section-tag">07 &nbsp;·&nbsp; Name Candidate 04</div>
+        <h2 class="section-title">A name that<br>looks <em>forward.</em></h2>
+        <div class="divider"></div>
+    </div>
+
+    <div class="name-page">
+        <div class="name-display">
+            <div class="name-number">Candidate 04</div>
+            <h3 class="name-word">Daybreak</h3>
+            <p class="name-pronunciation">Pronounced: /ˈdeɪ.breɪk/ &nbsp;·&nbsp; "DAY-brake"</p>
+            <p class="name-tagline">"A fresh start, every morning."</p>
+        </div>
+
+        <div class="name-rationale">
+            <p class="body-text"><strong>Symbolism and emotional promise.</strong> Daybreak is the moment the world resets — light returning, noise quiet, possibility open. For a small business owner, mornings are when the day's optimism is highest and the weight has not yet settled in. The name borrows that feeling and offers it back as a daily promise: no matter how yesterday went, today can start clean. That is a remarkable emotional gift to give an audience for whom bad days are not abstract — they are payroll days, slow weeks, and the customer who never came back.</p>
+
+            <p class="body-text"><strong>How it captures the product without describing it.</strong> "Daybreak" does not literally describe agents or workloads or coordination, but it captures what the product <em>feels like to use</em>: the morning gets easier. The follow-ups are already drafted. The schedule is already checked. The owner walks into the day a little lighter than yesterday. The brand can build its entire narrative around that moment of arrival — the dashboard greeting you at dawn, the agents having worked through the night, the day breaking fresh.</p>
+
+            <p class="body-text"><strong>Brand stretch and category fit.</strong> Daybreak works equally well for daily ops, planning, scheduling, and recurring work — anything tied to the rhythm of a working day. It avoids the technology vocabulary entirely while still feeling modern and clean. Visually, it pairs with sunrise gradients (coral to peach to cream — the brand palette already <em>is</em> a sunrise), and the wordmark in Fraunces light italic would feel like morning light itself. Few names in this category carry this much emotional warmth with this much clarity.</p>
+        </div>
+
+        <div class="name-meta">
+            <div>
+                <p class="meta-label">Vibe</p>
+                <p class="meta-value">Optimistic · Fresh · Calm</p>
+            </div>
+            <div>
+                <p class="meta-label">Best For</p>
+                <p class="meta-value">Owners running daily operations — scheduling, recurring services, appointments, hospitality, food service.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ NAME 5 — CREW & CO. ============ -->
+    <div class="chapter-header">
+        <div class="section-tag">08 &nbsp;·&nbsp; Name Candidate 05</div>
+        <h2 class="section-title">A team feel,<br>with a small-biz <em>accent.</em></h2>
+        <div class="divider"></div>
+    </div>
+
+    <div class="name-page">
+        <div class="name-display">
+            <div class="name-number">Candidate 05</div>
+            <h3 class="name-word">Crew &amp; Co.</h3>
+            <p class="name-pronunciation">Pronounced: /kruː ənd koʊ/ &nbsp;·&nbsp; "KROO and CO"</p>
+            <p class="name-tagline">"Your crew, always on duty."</p>
+        </div>
+
+        <div class="name-rationale">
+            <p class="body-text"><strong>Meaning and small-business accent.</strong> A crew is a working team bound by a shared mission — the crew of a ship, a film crew, a construction crew. It implies people who show up, do their part, and look out for each other. The "&amp; Co." suffix is borrowed straight from the language of family businesses and old-fashioned partnerships — Smith &amp; Co., Jones &amp; Sons — and it carries the warmth of a hand-painted sign over a shop door. Together the name says: this is not a software vendor, this is your team.</p>
+
+            <p class="body-text"><strong>Friendliness without preciousness.</strong> "Crew &amp; Co." is the most approachable name on the shortlist. It sounds like a coffee shop, a friendly vendor, a local hangout — not a tech product. That disarming friendliness is exactly right for an audience that has been burned by enterprise software dressed up in friendly clothing. The brand never has to insist on its warmth because the name has already established it. Every interaction that follows simply confirms what the name already promised.</p>
+
+            <p class="body-text"><strong>Brand extension potential.</strong> The name unlocks a clean product vocabulary. The platform is "the crew." Each agent is "a crew member." Onboarding new agents is "hiring." Approval queues are "the daily roster." This human, HR-style language is familiar to anyone who has ever run a team, and it makes the multi-agent concept instantly legible. The brand world practically writes itself — and the "&amp; Co." can flexibly extend into specific verticals: Crew &amp; Co. for Restaurants, Crew &amp; Co. for Studios, and so on.</p>
+        </div>
+
+        <div class="name-meta">
+            <div>
+                <p class="meta-label">Vibe</p>
+                <p class="meta-value">Friendly · Approachable · Local</p>
+            </div>
+            <div>
+                <p class="meta-label">Best For</p>
+                <p class="meta-value">Owners running small teams — multi-location retail, food service, agencies, any business with staff.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ TYPOGRAPHY ============ -->
+    <div class="chapter-header">
+        <div class="section-tag">09 &nbsp;·&nbsp; Typography</div>
+        <h2 class="section-title">Two typefaces,<br>neither one <em>tech-coded.</em></h2>
+        <div class="divider"></div>
+    </div>
+
+    <p class="body-text">The brand uses two typefaces, both chosen to feel human rather than technological. <strong>Fraunces</strong> — a contemporary humanist serif with old-style proportions and a soft, warm italic — handles all headlines, display moments, and emotional emphasis. <strong>Inter</strong> — a clean, neutral sans-serif with excellent legibility at small sizes — handles all body text, UI labels, and functional copy. Neither typeface carries the cold geometric associations of tech-brand defaults like SF Pro, Roboto, or Helvetica. Together they create an editorial, paper-like feel that matches the warm palette.</p>
+
+    <div class="type-specimen">
+        <div class="type-aa">Aa</div>
+        <div class="type-info">
+            <p class="role">Headlines · Display · Emphasis</p>
+            <h4>Fraunces</h4>
+            <p class="sample serif-sample">A warm humanist serif with old-style proportions — set in italic 300, it reads like morning light on a printed page.</p>
+        </div>
+    </div>
+
+    <div class="type-specimen">
+        <div class="type-aa inter">Aa</div>
+        <div class="type-info">
+            <p class="role">Body · UI · Functional copy</p>
+            <h4 style="font-family: 'Inter', sans-serif; font-weight: 600;">Inter</h4>
+            <p class="sample">A clean, neutral sans-serif with excellent legibility at small sizes. Carries body text without ever competing for attention.</p>
+        </div>
+    </div>
+
+    <table class="type-scale">
+        <thead>
+            <tr>
+                <th style="width: 30%;">Role</th>
+                <th style="width: 30%;">Typeface</th>
+                <th style="width: 20%;">Size</th>
+                <th style="width: 20%;">Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td class="role-cell">Hero</td><td class="font-cell">Fraunces</td><td class="size-cell">64px / 0.95</td><td class="size-cell">400</td></tr>
+            <tr><td class="role-cell">H1</td><td class="font-cell">Fraunces</td><td class="size-cell">40px / 1.05</td><td class="size-cell">400</td></tr>
+            <tr><td class="role-cell">H2</td><td class="font-cell">Fraunces</td><td class="size-cell">28px / 1.15</td><td class="size-cell">500</td></tr>
+            <tr><td class="role-cell">Body</td><td class="font-cell">Inter</td><td class="size-cell">14.5px / 1.65</td><td class="size-cell">400</td></tr>
+            <tr><td class="role-cell">Lead</td><td class="font-cell">Fraunces italic</td><td class="size-cell">20px / 1.45</td><td class="size-cell">300</td></tr>
+            <tr><td class="role-cell">Caption</td><td class="font-cell">Inter</td><td class="size-cell">12px / 1.5</td><td class="size-cell">500</td></tr>
+            <tr><td class="role-cell">Tag / Label</td><td class="font-cell">Inter</td><td class="size-cell">10px / 1.4</td><td class="size-cell">600</td></tr>
+        </tbody>
+    </table>
+
+    <p class="body-text" style="margin-top: 18px;">The pairing works because each typeface does only what it is good at. Fraunces carries emotion, personality, and the moments where the brand needs to feel like a person rather than a system. Inter carries information density, scannable UI, and long-form readability. Crucially, Fraunces is rarely set above 500 weight — its warmth comes from the lighter weights and the italic, not from boldness — so the brand never feels heavy or assertive. Inter is rarely set below 400, so body copy never feels thin or uncertain. The result is a system that feels editorial, calm, and quietly confident.</p>
+
+    <!-- ============ USE CASES ============ -->
+    <div class="chapter-header">
+        <div class="section-tag">10 &nbsp;·&nbsp; How the Brand Comes Alive</div>
+        <h2 class="section-title">The brand in<br><em>three moments.</em></h2>
+        <div class="divider"></div>
+    </div>
+
+    <p class="body-text">A brand is not a logo or a color palette — it is the cumulative feeling a user has across every interaction. Below are three moments where the brand's warmth, plain-spoken voice, and human-first orientation should be most visible. These are not mockups; they are descriptions meant to guide designers and writers as the product takes shape.</p>
+
+    <div class="usecase-card">
+        <h4 class="usecase-title">01 &nbsp;·&nbsp; The Onboarding Screen</h4>
+        <p class="usecase-body">The first thing a new user sees should not be a feature tour or a setup wizard. It should be a warm greeting — cream background, a single Fraunces italic headline like "Good to meet you," and one short paragraph explaining what the platform will do for them in plain English. No icons of robots. No mention of "agents" or "AI." A single coral button that says "Let's get started." The whole screen should feel like walking into a friendly shop for the first time and being recognized by the owner.</p>
+    </div>
+
+    <div class="usecase-card">
+        <h4 class="usecase-title">02 &nbsp;·&nbsp; The Dashboard</h4>
+        <p class="usecase-body">Each helper in the system should be shown as a named crew member with a friendly avatar — not as a "bot" or a "node." The dashboard greets the owner by first name, lists what each crew member is currently working on in plain language ("Maya is drafting replies to three reviews," "Theo is checking tomorrow's schedule"), and surfaces anything that needs the owner's sign-off as a quiet, prioritized list. Coral is reserved only for things that genuinely need attention. Most of the screen is cream and peach, calm and scannable.</p>
+    </div>
+
+    <div class="usecase-card">
+        <h4 class="usecase-title">03 &nbsp;·&nbsp; Email &amp; Notifications</h4>
+        <p class="usecase-body">Every email should read like a colleague pinging you, not a system alert. Subject lines like "Three things done, one needs your eyes" — not "Daily Activity Report." Sign-offs use the crew member's name and a small handwritten-style signature. Notifications arrive only when something genuinely requires attention; the brand earns trust by being quiet most of the time. When something does need action, the email says exactly what to do, in one sentence, with a single coral button.</p>
+    </div>
+
+    <!-- ============ RECOMMENDATION ============ -->
+    <div class="chapter-header">
+        <div class="section-tag">11 &nbsp;·&nbsp; Recommendation &amp; Next Steps</div>
+        <h2 class="section-title">Two finalists,<br>and a clear <em>path forward.</em></h2>
+        <div class="divider"></div>
+    </div>
+
+    <p class="body-text">Of the five candidates explored, two stand out as the strongest finalists for trademark search, domain acquisition, and customer testing. The other three remain valuable as alternates and as inspiration for product vocabulary, but they are not recommended for the primary brand identity at this time. The recommendation below reflects fit with the target audience, distinctiveness in the category, and the richness of the brand world each name unlocks.</p>
+
+    <div class="recommend-card">
+        <h4>Finalist 01 &nbsp;·&nbsp; Hearthwork</h4>
+        <p>The strongest single name. It is distinctive, emotionally resonant, and unlocks a deep visual and verbal brand world. The compound feels like it should already exist, which is exactly the feeling we want small business owners to have. Recommend advancing to trademark search.</p>
+    </div>
+
+    <div class="recommend-card">
+        <h4>Finalist 02 &nbsp;·&nbsp; Manyhands</h4>
+        <p>The most accessible name on the list. Borrowing from a known proverb means the brand never has to explain itself, which is invaluable for an audience that does not want to learn new vocabulary. Slightly less distinctive than Hearthwork, but unmatched for plain-spoken warmth. Recommend advancing to trademark search.</p>
+    </div>
+
+    <p class="body-text">The remaining three — <strong>Kindred</strong>, <strong>Daybreak</strong>, and <strong>Crew &amp; Co.</strong> — are excellent names that may yet become the right choice depending on trademark availability and customer testing results. They also provide rich vocabulary that can be borrowed regardless of which name is chosen: "kindred" can describe the relationship with customers, "daybreak" can name the daily digest, and "crew" can describe the agents.</p>
+
+    <p class="body-text">A warm, human brand is not just a creative choice for this audience — it is a strategic one. Small business owners have been sold technology on technology's terms for thirty years, and they have learned to be skeptical. A brand that meets them on their terms, in their language, with their warmth, earns the right to be trusted. That trust is the only moat that matters in this market.</p>
+
+    <p class="meta-label" style="margin-top: 18px;">Next Steps</p>
+    <ol class="next-steps">
+        <li>Run a US trademark search (TESS) on Hearthwork and Manyhands. Eliminate any candidate with a direct conflict in Class 9 (software) or Class 42 (SaaS).</li>
+        <li>Check .com, .ai, and .co domain availability for both finalists. Budget for domain acquisition if a clean .com is parked but available.</li>
+        <li>Test both names with 5 small business owners in 30-minute interviews. Ask: what does this name make you expect? Would you trust a product with this name?</li>
+        <li>Commission two logo concepts for the chosen name — one wordmark-only, one with a simple symbol. Resist any brief that mentions "tech," "AI," or "agent."</li>
+        <li>Finalize brand identity within two weeks of customer testing. Lock palette and typography first; refine logo in parallel.</li>
+    </ol>
+
+</div>
+
+<!-- ============ ENDING ============ -->
+<div class="ending">
+    <div class="ending-deco ending-deco-1"></div>
+    <div class="ending-deco ending-deco-2"></div>
+
+    <div class="ending-tag">Brand Book &nbsp;·&nbsp; End</div>
+
+    <p class="ending-big">A brand that <strong>shows up warm</strong>, does the work, and never asks for credit.</p>
+
+    <div class="ending-foot">
+        Five name candidates &nbsp;·&nbsp; Sunset Coral palette &nbsp;·&nbsp; Fraunces + Inter &nbsp;·&nbsp; July 2026
+    </div>
+</div>
+
+</body>
+</html>
