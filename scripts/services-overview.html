@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Services Overview — What We Do For Your Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page {
+    size: 800px 1280px;
+    margin: 0;
+}
+:root {
+    --blush: #FFBEBF;
+    --peach2: #FF7E5D;
+    --purple1: #8954AB;
+    --purple2: #B464AD;
+    --peach1: #F33167;
+    --charcoal: #2D1B2E;
+    --muted: #6B4D5C;
+    --line: #F0D0D0;
+    --soft: #FAE3E3;
+    --soft-purple: #F2E6F2;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 800px;
+    background: var(--blush);
+    color: var(--charcoal);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+@media screen {
+    html {
+        height: auto;
+        display: flex;
+        justify-content: center;
+        background: #d9c5b0;
+    }
+    body {
+        margin: 20px auto;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    }
+}
+
+.poster {
+    width: 800px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: var(--blush);
+}
+
+/* ========== HEADER ========== */
+.header {
+    padding: 70px 64px 36px 64px;
+    position: relative;
+    background: var(--blush);
+}
+.header-band-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--purple1);
+}
+.header-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: var(--purple2);
+    text-transform: uppercase;
+    margin: 0 0 18px 0;
+    padding-top: 10px;
+}
+.header-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.0;
+    color: var(--charcoal);
+    margin: 0 0 22px 0;
+    letter-spacing: -1.2px;
+    max-width: 640px;
+}
+.header-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--purple1);
+}
+.header-sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.45;
+    color: var(--muted);
+    max-width: 580px;
+    margin: 0;
+}
+.header-deco {
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: var(--peach1);
+    opacity: 0.92;
+    z-index: 1;
+}
+.header-deco-small {
+    position: absolute;
+    top: 150px;
+    right: 130px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--purple2);
+    opacity: 0.7;
+    z-index: 1;
+}
+
+/* ========== SERVICES GRID ========== */
+.services {
+    padding: 30px 64px 56px 64px;
+}
+.services-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--charcoal);
+    max-width: 640px;
+    margin: 0 0 28px 0;
+}
+.services-intro strong {
+    color: var(--purple1);
+    font-weight: 600;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+.service-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 24px 26px 22px 26px;
+    position: relative;
+    border: 1px solid var(--line);
+    box-shadow: 0 2px 8px rgba(45, 27, 46, 0.04);
+}
+.service-card.featured {
+    background: var(--soft-purple);
+    border-color: var(--purple2);
+}
+.service-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--purple1);
+    color: #FFFFFF;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+.service-card.featured .service-number {
+    background: var(--peach1);
+}
+.service-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--charcoal);
+    margin: 0 0 6px 0;
+    line-height: 1.15;
+}
+.service-name em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--purple1);
+}
+.service-card.featured .service-name em {
+    color: var(--peach1);
+}
+.service-origin {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 10px 0;
+}
+.service-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--charcoal);
+    margin: 0;
+}
+.service-desc strong {
+    color: var(--purple1);
+    font-weight: 600;
+}
+.service-card.featured .service-desc strong {
+    color: var(--peach1);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    background: var(--purple1);
+    color: var(--blush);
+    padding: 48px 64px 48px 64px;
+    position: relative;
+    overflow: hidden;
+}
+.footer-deco-1 {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: var(--peach1);
+    opacity: 0.5;
+}
+.footer-deco-2 {
+    position: absolute;
+    bottom: -50px;
+    left: 40%;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: var(--peach2);
+    opacity: 0.5;
+}
+.footer-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+.footer-text {
+    flex: 1;
+}
+.footer-headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--blush);
+    margin: 0 0 10px 0;
+}
+.footer-headline strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--peach2);
+}
+.footer-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--blush);
+    opacity: 0.85;
+    margin: 0;
+    max-width: 420px;
+}
+.footer-cta {
+    background: var(--peach1);
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 14px 26px;
+    border-radius: 6px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.footer-mark {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--blush);
+    opacity: 0.7;
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+}
+</style>
+</head>
+<body>
+
+<div class="poster">
+
+    <!-- ========== HEADER ========== -->
+    <div class="header">
+        <div class="header-band-top"></div>
+        <div class="header-deco"></div>
+        <div class="header-deco-small"></div>
+
+        <p class="header-tag">Services Overview &nbsp;·&nbsp; For Business Owners</p>
+        <h1 class="header-title">Eight ways we make the day <em>easier</em> — without ever feeling like software.</h1>
+        <p class="header-sub">A plain-language guide to what your crew actually does. No jargon, no dashboards to learn, no new login to remember — just teammates who show up, pick up the load, and let you get back to the human work.</p>
+    </div>
+
+    <!-- ========== SERVICES GRID ========== -->
+    <div class="services">
+        <p class="services-intro">We do not sell "AI agents" or "orchestration layers." We sell time, calm, and the feeling of having someone in your corner. Every service below is one way we deliver on that promise — quietly, in the background, every working day. <strong>Pick the ones your business needs today; the rest are there when you grow into them.</strong></p>
+
+        <div class="services-grid">
+
+            <div class="service-card featured">
+                <div class="service-number">1</div>
+                <h3 class="service-name">The <em>Coordinator</em></h3>
+                <p class="service-origin">Originally: The Orchestrator</p>
+                <p class="service-desc">The teammate who makes sure <strong>nothing falls through the cracks</strong>. Every task gets picked up by the right person, every time. Two crew members never collide on the same job — and nothing waits silently for someone to notice it.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-number">2</div>
+                <h3 class="service-name">People <em>Memory</em></h3>
+                <p class="service-origin">Originally: Pule — People Context</p>
+                <p class="service-desc">We remember your customers, your suppliers, and your team — so you never have to explain a relationship twice. When someone messages, your crew already knows who they are, what they last ordered, and what they care about.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-number">3</div>
+                <h3 class="service-name">Knowledge at <em>Hand</em></h3>
+                <p class="service-origin">Originally: Albert — Knowledge</p>
+                <p class="service-desc">Your documents, past conversations, and meeting notes become a <strong>searchable library</strong> the whole team can draw on. No more digging through old emails. Ask a question, get an answer with a source.</p>
+            </div>
+
+            <div class="service-card featured">
+                <div class="service-number">4</div>
+                <h3 class="service-name">Always-On <em>Crew</em></h3>
+                <p class="service-origin">Originally: Always-on Services</p>
+                <p class="service-desc">Background helpers that keep working when you're not. <strong>Scheduled tasks run on time, monitoring checks the things that matter, follow-ups happen automatically</strong> — so the morning starts with work already done.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-number">5</div>
+                <h3 class="service-name">Tool <em>Connections</em></h3>
+                <p class="service-origin">Originally: Tool Integrations</p>
+                <p class="service-desc">We plug into the tools you already use — email, calendar, tasks, messaging, content, and more. Nothing has to move. Your crew works inside the apps your business already lives in, alongside you.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-number">6</div>
+                <h3 class="service-name">The <em>Dashboard</em></h3>
+                <p class="service-origin">Originally: Operator Dashboard</p>
+                <p class="service-desc">One calm screen where you see <strong>what's done, what's in progress, and what needs your eyes</strong>. No noise, no fifty tabs. Everything important in one place, organized by what you actually need to do next.</p>
+            </div>
+
+            <div class="service-card featured">
+                <div class="service-number">7</div>
+                <h3 class="service-name">Sign-Off <em>Loop</em></h3>
+                <p class="service-origin">Originally: Review &amp; Automation Workflows</p>
+                <p class="service-desc">Anything that needs your judgment comes to you first. <strong>Nothing important ships without your say-so.</strong> Your crew checks its own work, flags anything uncertain, and waits for your nod before sending that email or posting that reply.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-number">8</div>
+                <h3 class="service-name">Crew <em>Members</em></h3>
+                <p class="service-origin">Originally: Agent Personas</p>
+                <p class="service-desc">Specialist teammates, each with a role — one for scheduling, one for follow-ups, one for research, one for bookkeeping. Bring the ones you need, hire more as you grow. They remember, they learn, they get better.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <div class="footer">
+        <div class="footer-deco-1"></div>
+        <div class="footer-deco-2"></div>
+
+        <div class="footer-content">
+            <div class="footer-text">
+                <p class="footer-headline">A <strong>crew</strong> that handles the busywork, so you can do the human work.</p>
+                <p class="footer-sub">Start with one service, grow into the rest. No long contracts, no setup fees, no technical onboarding. Just a friendly conversation about what your business needs this week.</p>
+            </div>
+            <div class="footer-cta">Let's talk &rarr;</div>
+        </div>
+
+        <p class="footer-mark">— a warm start for the work ahead</p>
+    </div>
+
+</div>
+
+</body>
+</html>
