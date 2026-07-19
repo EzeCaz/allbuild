@@ -12,14 +12,15 @@
     margin: 0;
 }
 :root {
-    --cream: #FFF6EC;
-    --peach: #FFB48A;
-    --coral: #FF7A59;
-    --terracotta: #C66B3D;
-    --charcoal: #2A1F1A;
-    --muted: #6B5849;
-    --line: #E8D5C2;
-    --soft: #FBE7D5;
+    --cream: #FFBEBF;       /* Accent / Background White (blush) */
+    --peach: #FF7E5D;       /* Secondary Peach */
+    --coral: #8954AB;       /* Primary Purple — main accent */
+    --terracotta: #B464AD;  /* Secondary Purple — deep accent */
+    --hot: #F33167;         /* Primary Peach — highlight */
+    --charcoal: #2D1B2E;    /* Warm plum-charcoal for text */
+    --muted: #6B4D5C;       /* Muted plum for secondary text */
+    --line: #F0D0D0;        /* Soft blush line for borders */
+    --soft: #FAE3E3;        /* Pale blush for card fills */
 }
 html, body {
     margin: 0;
@@ -707,7 +708,7 @@ html, body {
     break-before: page;
     overflow: hidden;
     position: relative;
-    background: var(--terracotta);
+    background: var(--coral);  /* Primary Purple */
     padding: 80px 70px 60px 70px;
     display: flex;
     flex-direction: column;
@@ -723,18 +724,18 @@ html, body {
 .ending-deco-1 {
     width: 180px;
     height: 180px;
-    background: var(--coral);
+    background: var(--hot);  /* Primary Peach */
     top: 60px;
     right: 60px;
-    opacity: 0.45;
+    opacity: 0.55;
 }
 .ending-deco-2 {
     width: 90px;
     height: 90px;
-    background: var(--peach);
+    background: var(--peach);  /* Secondary Peach */
     top: 200px;
     right: 130px;
-    opacity: 0.55;
+    opacity: 0.65;
 }
 .ending-tag {
     font-family: 'Inter', sans-serif;
@@ -762,7 +763,7 @@ html, body {
 .ending-big strong {
     font-style: normal;
     font-weight: 500;
-    color: var(--peach);
+    color: var(--peach);  /* Secondary Peach */
 }
 .ending-foot {
     font-family: 'Inter', sans-serif;
@@ -888,62 +889,78 @@ html, body {
     <!-- ============ COLOR PALETTE ============ -->
     <div class="chapter-header">
         <div class="section-tag">03 &nbsp;·&nbsp; Color Palette</div>
-        <h2 class="section-title">Sunset Coral —<br>warm, <em>human</em>, optimistic.</h2>
+        <h2 class="section-title">Purple &amp; Peach —<br>warm, <em>feminine</em>, modern.</h2>
         <div class="divider"></div>
     </div>
 
-    <p class="body-text">The palette is deliberately warm — built around the colors of an evening sunset, a terracotta pot, a peach on a kitchen counter. There is no blue anywhere. Blue is the color of corporate dashboards, of technology products, of cold efficiency. We are none of those things. Cream carries 60% of every page so the brand always feels light and approachable; coral and terracotta provide the punctuation; a warm charcoal handles the text without ever going to pure black, which would feel harsh.</p>
+    <p class="body-text">The palette pairs two purple tones with two warm peach-pink tones, anchored by a soft blush background. The purples carry sophistication and creativity — colors historically associated with craft, imagination, and personal expression — while the peach-pinks bring warmth, optimism, and approachability. Together they feel contemporary without being cold, friendly without being saccharine. Blush carries 60% of every page so the brand always feels light and inviting; the purples provide the structural punctuation; the peach-pinks deliver the energy. No corporate blue, no sterile gray, no aggressive red.</p>
 
     <div class="palette-grid">
         <div class="swatch">
-            <div class="swatch-color" style="background: #FFF6EC; border: 1px solid #E8D5C2;"></div>
+            <div class="swatch-color" style="background: #FFBEBF; border: 1px solid #F0D0D0;"></div>
             <div class="swatch-info">
-                <p class="swatch-name">Cream</p>
-                <p class="swatch-hex">#FFF6EC</p>
-                <p class="swatch-use">Primary background. 60% of every surface. Sets the warm, paper-like base.</p>
+                <p class="swatch-name">Accent / Background White</p>
+                <p class="swatch-hex">#FFBEBF</p>
+                <p class="swatch-use">Primary background. 60% of every surface. A soft blush that replaces sterile white.</p>
             </div>
         </div>
         <div class="swatch">
-            <div class="swatch-color" style="background: #FFB48A;"></div>
+            <div class="swatch-color" style="background: #FF7E5D;"></div>
             <div class="swatch-info">
-                <p class="swatch-name">Peach</p>
-                <p class="swatch-hex">#FFB48A</p>
-                <p class="swatch-use">Secondary fills. Cards, soft highlights, illustrations. 20% of surface.</p>
+                <p class="swatch-name">Secondary Peach</p>
+                <p class="swatch-hex">#FF7E5D</p>
+                <p class="swatch-use">Soft fills. Cards, highlights, illustrations. 20% of surface.</p>
             </div>
         </div>
         <div class="swatch">
-            <div class="swatch-color" style="background: #FF7A59;"></div>
+            <div class="swatch-color" style="background: #8954AB;"></div>
             <div class="swatch-info">
-                <p class="swatch-name">Coral</p>
-                <p class="swatch-hex">#FF7A59</p>
-                <p class="swatch-use">Primary accent. CTAs, key data, brand marks. 10% of surface.</p>
+                <p class="swatch-name">Primary Purple</p>
+                <p class="swatch-hex">#8954AB</p>
+                <p class="swatch-use">Primary accent. CTAs, key data, brand marks, headlines. 10% of surface.</p>
             </div>
         </div>
         <div class="swatch">
-            <div class="swatch-color" style="background: #C66B3D;"></div>
+            <div class="swatch-color" style="background: #B464AD;"></div>
             <div class="swatch-info">
-                <p class="swatch-name">Terracotta</p>
-                <p class="swatch-hex">#C66B3D</p>
-                <p class="swatch-use">Deep accent. Headlines, italic emphasis. 5% of surface.</p>
+                <p class="swatch-name">Secondary Purple</p>
+                <p class="swatch-hex">#B464AD</p>
+                <p class="swatch-use">Deep accent. Italic emphasis, secondary highlights. 5% of surface.</p>
+            </div>
+        </div>
+        <div class="swatch">
+            <div class="swatch-color" style="background: #F33167;"></div>
+            <div class="swatch-info">
+                <p class="swatch-name">Primary Peach</p>
+                <p class="swatch-hex">#F33167</p>
+                <p class="swatch-use">Highlight. Vivid moments, alerts, special emphasis. 5% of surface.</p>
+            </div>
+        </div>
+        <div class="swatch">
+            <div class="swatch-color" style="background: #2D1B2E;"></div>
+            <div class="swatch-info">
+                <p class="swatch-name">Warm Plum Charcoal</p>
+                <p class="swatch-hex">#2D1B2E</p>
+                <p class="swatch-use">All body text. Never pure black — a deep plum-charcoal that stays warm against blush.</p>
             </div>
         </div>
     </div>
 
-    <p class="body-text">Two neutrals round out the system. <strong>Warm Charcoal (#2A1F1A)</strong> is used for all body text — never pure black, which would feel cold against the cream background. <strong>Sand Line (#E8D5C2)</strong> handles borders, dividers, and quiet structural elements without competing for attention. Together these six colors form a tight, cohesive family. No grays. No blues. No neon. Every visual the brand produces should feel like it belongs on a hand-printed menu or a craft bakery's packaging — warm, intentional, and made by people.</p>
+    <p class="body-text">Two structural neutrals round out the system. <strong>Warm Plum Charcoal (#2D1B2E)</strong> handles all body text — a deep purple-black that stays warm against the blush background instead of going cold like pure black would. <strong>Soft Blush Line (#F0D0D0)</strong> handles borders, dividers, and quiet structural elements without competing for attention. Together these colors form a tight, cohesive family where every hue has been chosen for warmth. The vivid Primary Peach (#F33167) is reserved for moments that genuinely need to pop — alerts, important numbers, key callouts — so it never loses its impact through overuse.</p>
 
-    <div class="ratio-bar" aria-label="Color usage ratio: cream 60%, peach 20%, coral 10%, terracotta 5%, charcoal 5%">
-        <div class="ratio-seg" style="background: #FFF6EC; border-right: 1px solid #E8D5C2; width: 60%;"></div>
-        <div class="ratio-seg" style="background: #FFB48A; width: 20%;"></div>
-        <div class="ratio-seg" style="background: #FF7A59; width: 10%;"></div>
-        <div class="ratio-seg" style="background: #C66B3D; width: 5%;"></div>
-        <div class="ratio-seg" style="background: #2A1F1A; width: 5%;"></div>
+    <div class="ratio-bar" aria-label="Color usage ratio: blush 60%, secondary peach 20%, primary purple 10%, secondary purple 5%, primary peach 5%">
+        <div class="ratio-seg" style="background: #FFBEBF; border-right: 1px solid #F0D0D0; width: 60%;"></div>
+        <div class="ratio-seg" style="background: #FF7E5D; width: 20%;"></div>
+        <div class="ratio-seg" style="background: #8954AB; width: 10%;"></div>
+        <div class="ratio-seg" style="background: #B464AD; width: 5%;"></div>
+        <div class="ratio-seg" style="background: #F33167; width: 5%;"></div>
     </div>
     <div class="ratio-legend">
-        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #FFF6EC; border: 1px solid #E8D5C2;"></span>Cream — base</div>
-        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #FFB48A;"></span>Peach — fill</div>
-        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #FF7A59;"></span>Coral — accent</div>
-        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #C66B3D;"></span>Terra — depth</div>
-        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #2A1F1A;"></span>Charcoal — text</div>
+        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #FFBEBF; border: 1px solid #F0D0D0;"></span>Blush — base</div>
+        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #FF7E5D;"></span>Peach 2 — fill</div>
+        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #8954AB;"></span>Purple 1 — accent</div>
+        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #B464AD;"></span>Purple 2 — depth</div>
+        <div class="ratio-leg-item"><span class="ratio-leg-dot" style="background: #F33167;"></span>Peach 1 — highlight</div>
     </div>
 
     <!-- ============ NAME 1 — HEARTHWORK ============ -->
@@ -1181,17 +1198,17 @@ html, body {
 
     <div class="usecase-card">
         <h4 class="usecase-title">01 &nbsp;·&nbsp; The Onboarding Screen</h4>
-        <p class="usecase-body">The first thing a new user sees should not be a feature tour or a setup wizard. It should be a warm greeting — cream background, a single Fraunces italic headline like "Good to meet you," and one short paragraph explaining what the platform will do for them in plain English. No icons of robots. No mention of "agents" or "AI." A single coral button that says "Let's get started." The whole screen should feel like walking into a friendly shop for the first time and being recognized by the owner.</p>
+        <p class="usecase-body">The first thing a new user sees should not be a feature tour or a setup wizard. It should be a warm greeting — blush background, a single Fraunces italic headline like "Good to meet you," and one short paragraph explaining what the platform will do for them in plain English. No icons of robots. No mention of "agents" or "AI." A single primary-purple button that says "Let's get started." The whole screen should feel like walking into a friendly shop for the first time and being recognized by the owner.</p>
     </div>
 
     <div class="usecase-card">
         <h4 class="usecase-title">02 &nbsp;·&nbsp; The Dashboard</h4>
-        <p class="usecase-body">Each helper in the system should be shown as a named crew member with a friendly avatar — not as a "bot" or a "node." The dashboard greets the owner by first name, lists what each crew member is currently working on in plain language ("Maya is drafting replies to three reviews," "Theo is checking tomorrow's schedule"), and surfaces anything that needs the owner's sign-off as a quiet, prioritized list. Coral is reserved only for things that genuinely need attention. Most of the screen is cream and peach, calm and scannable.</p>
+        <p class="usecase-body">Each helper in the system should be shown as a named crew member with a friendly avatar — not as a "bot" or a "node." The dashboard greets the owner by first name, lists what each crew member is currently working on in plain language ("Maya is drafting replies to three reviews," "Theo is checking tomorrow's schedule"), and surfaces anything that needs the owner's sign-off as a quiet, prioritized list. Primary purple is reserved only for things that genuinely need attention; Primary Peach (#F33167) is reserved for genuine alerts. Most of the screen is blush and soft peach, calm and scannable.</p>
     </div>
 
     <div class="usecase-card">
         <h4 class="usecase-title">03 &nbsp;·&nbsp; Email &amp; Notifications</h4>
-        <p class="usecase-body">Every email should read like a colleague pinging you, not a system alert. Subject lines like "Three things done, one needs your eyes" — not "Daily Activity Report." Sign-offs use the crew member's name and a small handwritten-style signature. Notifications arrive only when something genuinely requires attention; the brand earns trust by being quiet most of the time. When something does need action, the email says exactly what to do, in one sentence, with a single coral button.</p>
+        <p class="usecase-body">Every email should read like a colleague pinging you, not a system alert. Subject lines like "Three things done, one needs your eyes" — not "Daily Activity Report." Sign-offs use the crew member's name and a small handwritten-style signature. Notifications arrive only when something genuinely requires attention; the brand earns trust by being quiet most of the time. When something does need action, the email says exactly what to do, in one sentence, with a single primary-purple button.</p>
     </div>
 
     <!-- ============ RECOMMENDATION ============ -->
@@ -1238,7 +1255,7 @@ html, body {
     <p class="ending-big">A brand that <strong>shows up warm</strong>, does the work, and never asks for credit.</p>
 
     <div class="ending-foot">
-        Five name candidates &nbsp;·&nbsp; Sunset Coral palette &nbsp;·&nbsp; Fraunces + Inter &nbsp;·&nbsp; July 2026
+        Five name candidates &nbsp;·&nbsp; Purple &amp; Peach palette &nbsp;·&nbsp; Fraunces + Inter &nbsp;·&nbsp; July 2026
     </div>
 </div>
 
