@@ -24,6 +24,30 @@ import {
 } from 'lucide-react'
 
 // ====================================================================
+//  IMAGE LIBRARY (real entrepreneur portraits, OSS-hosted)
+// ====================================================================
+
+const IMG = {
+  // Testimonial founders
+  priya: 'https://sfile.chatglm.cn/images-ppt/ec968c8bcb6d.jpeg',
+  marcus: 'https://sfile.chatglm.cn/images-ppt/ab44896b0dec.jpg',
+  tea: 'https://sfile.chatglm.cn/images-ppt/8e0c19b53088.jpg',
+  jordan: 'https://sfile.chatglm.cn/images-ppt/41aee99df999.jpg',
+  // Service-card founders
+  cafe: 'https://sfile.chatglm.cn/images-ppt/7c62d256792f.jpg',
+  salon: 'https://sfile.chatglm.cn/images-ppt/bc81304bffd5.jpg',
+  freelancer: 'https://sfile.chatglm.cn/images-ppt/354255c73db2.jpg',
+  contractor: 'https://sfile.chatglm.cn/images-ppt/3f1f7388bded.jpg',
+  // Crew members (Hearthwork's own specialists)
+  maya: 'https://sfile.chatglm.cn/images-ppt/116825723f1c.jpg',
+  theo: 'https://sfile.chatglm.cn/images-ppt/8cf5e1dfa4c4.jpg',
+  lena: 'https://sfile.chatglm.cn/images-ppt/215136aedf3c.jpg',
+  owen: 'https://sfile.chatglm.cn/images-ppt/7c9e8cac327b.jpg',
+  // Hero CTA founder
+  heroFounder: 'https://sfile.chatglm.cn/images-ppt/fe3a3e03b317.jpg',
+} as const
+
+// ====================================================================
 //  DATA
 // ====================================================================
 
@@ -34,6 +58,7 @@ const SERVICES = [
     origin: 'Originally: The Orchestrator',
     desc: 'Nothing falls through the cracks. Every task picked up by the right crew member, every time.',
     accent: 'peach',
+    founder: { name: 'Sofia', role: 'Cafe owner', img: IMG.cafe },
   },
   {
     icon: Heart,
@@ -41,6 +66,7 @@ const SERVICES = [
     origin: 'Originally: Pule',
     desc: 'We remember your customers, suppliers, and team — so you never explain a relationship twice.',
     accent: 'purple',
+    founder: { name: 'Nina', role: 'Salon owner', img: IMG.salon },
   },
   {
     icon: FileText,
@@ -48,6 +74,7 @@ const SERVICES = [
     origin: 'Originally: Albert',
     desc: 'Documents, meetings, and notes become a searchable library the whole crew can draw on.',
     accent: 'purple',
+    founder: { name: 'Eli', role: 'Freelance designer', img: IMG.freelancer },
   },
   {
     icon: Zap,
@@ -55,6 +82,7 @@ const SERVICES = [
     origin: 'Originally: Always-on Services',
     desc: 'Background helpers keep working when you are not. Scheduled tasks, monitoring, follow-ups.',
     accent: 'peach',
+    founder: { name: 'Diego', role: 'Contractor', img: IMG.contractor },
   },
   {
     icon: Calendar,
@@ -62,6 +90,7 @@ const SERVICES = [
     origin: 'Originally: Tool Integrations',
     desc: 'We plug into the apps you already use — email, calendar, tasks, messaging, content.',
     accent: 'purple',
+    founder: { name: 'Priya', role: 'Florist', img: IMG.priya },
   },
   {
     icon: Sparkles,
@@ -69,6 +98,7 @@ const SERVICES = [
     origin: 'Originally: Operator Dashboard',
     desc: 'One calm screen for what is done, what is in progress, and what needs your eyes.',
     accent: 'peach',
+    founder: { name: 'Marcus', role: 'Coffee roaster', img: IMG.marcus },
   },
   {
     icon: CheckCircle2,
@@ -76,6 +106,7 @@ const SERVICES = [
     origin: 'Originally: Review Workflows',
     desc: 'Nothing important ships without your say-so. Your crew checks its work and waits for your nod.',
     accent: 'purple',
+    founder: { name: 'Téa', role: 'Consultant', img: IMG.tea },
   },
   {
     icon: Mail,
@@ -83,6 +114,7 @@ const SERVICES = [
     origin: 'Originally: Agent Personas',
     desc: 'Specialist teammates, each with a role — scheduling, follow-ups, research, bookkeeping.',
     accent: 'peach',
+    founder: { name: 'Jordan', role: 'Studio founder', img: IMG.jordan },
   },
 ] as const
 
@@ -104,21 +136,21 @@ const PALETTE = [
 ]
 
 const CREW = [
-  { name: 'Maya', role: 'Reviews & Replies', color: '#F33167', status: 'drafting' },
-  { name: 'Theo', role: 'Scheduling', color: '#8954AB', status: 'checking' },
-  { name: 'Lena', role: 'Bookkeeping', color: '#B464AD', status: 'reconciling' },
-  { name: 'Owen', role: 'Research', color: '#FF7E5D', status: 'reading' },
+  { name: 'Maya', role: 'Reviews & Replies', color: '#F33167', status: 'drafting', img: IMG.maya },
+  { name: 'Theo', role: 'Scheduling', color: '#8954AB', status: 'checking', img: IMG.theo },
+  { name: 'Lena', role: 'Bookkeeping', color: '#B464AD', status: 'reconciling', img: IMG.lena },
+  { name: 'Owen', role: 'Research', color: '#FF7E5D', status: 'reading', img: IMG.owen },
 ] as const
 
 const CREW_ACTIVITIES = [
   'drafted a reply to a 3-star review on Google',
-  'queued tomorrow morning\'s invoice batch',
+  "queued tomorrow morning's invoice batch",
   'flagged a scheduling conflict at 2pm Thursday',
-  'pulled last quarter\'s revenue summary',
+  "pulled last quarter's revenue summary",
   'sent a follow-up to the new lead from Instagram',
   'booked the recurring Monday team sync',
   'cleaned up 14 duplicate contacts in your list',
-  'drafted this week\'s customer newsletter',
+  "drafted this week's customer newsletter",
   'caught a typo in the contract before it sent',
   'reminded you about the expiring domain renewal',
 ]
@@ -129,15 +161,15 @@ const TESTIMONIALS = [
       'My mornings used to start with dread — 30 unread emails, three forgotten follow-ups. Now I wake up and Maya has already drafted the replies. I just say yes or no.',
     name: 'Priya Shah',
     role: 'Founder, Sunday Bloom Florals',
-    avatar: 'P',
+    img: IMG.priya,
     color: '#F33167',
   },
   {
     quote:
-      'I run a two-person coffee roastery. We don\'t have a marketing team. Hearthwork is our marketing team. It posts, it replies, it follows up — I just taste the coffee.',
+      "I run a two-person coffee roastery. We don't have a marketing team. Hearthwork is our marketing team. It posts, it replies, it follows up — I just taste the coffee.",
     name: 'Marcus Reyes',
     role: 'Co-owner, Northbound Roasters',
-    avatar: 'M',
+    img: IMG.marcus,
     color: '#8954AB',
   },
   {
@@ -145,7 +177,7 @@ const TESTIMONIALS = [
       'I was skeptical. Every "AI assistant" I tried before felt like a chatbot pretending to be a person. This is the first one that feels like a coworker who actually gets it.',
     name: 'Téa Levesque',
     role: 'Solo consultant, Levesque Strategy',
-    avatar: 'T',
+    img: IMG.tea,
     color: '#FF7E5D',
   },
   {
@@ -153,9 +185,18 @@ const TESTIMONIALS = [
       'I hired Hearthwork to do admin. Six weeks later it is doing customer research, draft proposals, and weekly retrospectives. I did not ask for any of that. It just kept showing up.',
     name: 'Jordan Okafor',
     role: 'Founder, Loop Studio',
-    avatar: 'J',
+    img: IMG.jordan,
     color: '#B464AD',
   },
+]
+
+const STATS_FOUNDERS = [
+  { name: 'Priya', img: IMG.priya },
+  { name: 'Marcus', img: IMG.marcus },
+  { name: 'Téa', img: IMG.tea },
+  { name: 'Jordan', img: IMG.jordan },
+  { name: 'Sofia', img: IMG.cafe },
+  { name: 'Nina', img: IMG.salon },
 ]
 
 const PRICING = [
@@ -167,6 +208,7 @@ const PRICING = [
     features: ['2 crew members', '3 tool connections', 'Daily digests', 'Email support'],
     cta: 'Start free',
     featured: false,
+    founders: [IMG.freelancer, IMG.cafe, IMG.salon],
   },
   {
     name: 'Crew',
@@ -183,6 +225,7 @@ const PRICING = [
     ],
     cta: 'Start 14-day trial',
     featured: true,
+    founders: [IMG.priya, IMG.marcus, IMG.tea, IMG.jordan, IMG.contractor],
   },
   {
     name: 'Studio',
@@ -198,6 +241,7 @@ const PRICING = [
     ],
     cta: 'Book a call',
     featured: false,
+    founders: [IMG.jordan, IMG.marcus],
   },
 ]
 
@@ -221,6 +265,32 @@ function useCountUp(target: number, duration = 1500, start = false) {
     return () => cancelAnimationFrame(raf)
   }, [target, duration, start])
   return value
+}
+
+function Avatar({
+  src,
+  alt,
+  size = 36,
+  ring = '#FFFFFF',
+  className = '',
+}: {
+  src: string
+  alt: string
+  size?: number
+  ring?: string
+  className?: string
+}) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      width={size}
+      height={size}
+      className={`rounded-full object-cover flex-shrink-0 ${className}`}
+      style={{ width: size, height: size, border: `2px solid ${ring}` }}
+      loading="lazy"
+    />
+  )
 }
 
 // ====================================================================
@@ -353,7 +423,7 @@ function Hero() {
       <div className="absolute top-32 left-[8%] w-24 h-24 rounded-full bg-peach-1/30 animate-floaty blur-sm" />
       <div className="absolute top-48 right-[12%] w-32 h-32 rounded-full bg-purple-1/25 animate-floaty-slow blur-sm" />
       <div className="absolute bottom-32 left-[15%] w-20 h-20 rounded-full bg-purple-2/30 animate-floaty blur-sm" />
-      <div className="absolute bottom-48 right-[8%] w-16 h-16 rounded-full bg-peach-2/40 animate-floaty-slow" />
+      <div className="absolute bottom-48 right-[8%] w-16 h-16 rounded-full bg-peach-2/40 animate-floaty-slow blur-sm" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
         <motion.div
@@ -433,31 +503,28 @@ function HeroCard() {
       {/* Main card */}
       <div className="relative bg-white rounded-3xl shadow-2xl shadow-purple-1/15 p-6 border border-white">
         <div className="flex items-center justify-between mb-5">
-          <div>
-            <div className="text-xs font-semibold text-muted-plum tracking-wider uppercase">
-              Tuesday morning
+          <div className="flex items-center gap-3">
+            <Avatar src={IMG.priya} alt="Priya" size={44} ring="#F33167" />
+            <div>
+              <div className="text-xs font-semibold text-muted-plum tracking-wider uppercase">
+                Tuesday morning
+              </div>
+              <div className="font-display text-lg text-plum">Good morning, Priya.</div>
             </div>
-            <div className="font-display text-lg text-plum">Good morning, Priya.</div>
           </div>
           <div className="flex -space-x-2">
             {CREW.slice(0, 4).map((c) => (
-              <div
-                key={c.name}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-semibold border-2 border-white"
-                style={{ backgroundColor: c.color }}
-              >
-                {c.name[0]}
-              </div>
+              <Avatar key={c.name} src={c.img} alt={c.name} size={28} ring="#FFFFFF" />
             ))}
           </div>
         </div>
 
         <div className="space-y-2.5">
           {[
-            { text: 'Maya drafted 3 review replies', icon: '✓', color: '#F33167' },
-            { text: 'Theo queued 5 invoices for Tuesday', icon: '✓', color: '#8954AB' },
-            { text: 'Lena reconciled last week\'s books', icon: '✓', color: '#B464AD' },
-            { text: 'Owen flagged 1 scheduling conflict', icon: '!', color: '#FF7E5D' },
+            { text: 'Maya drafted 3 review replies', icon: '✓', color: '#F33167', crewImg: IMG.maya, crewName: 'Maya' },
+            { text: 'Theo queued 5 invoices for Tuesday', icon: '✓', color: '#8954AB', crewImg: IMG.theo, crewName: 'Theo' },
+            { text: 'Lena reconciled last week\'s books', icon: '✓', color: '#B464AD', crewImg: IMG.lena, crewName: 'Lena' },
+            { text: 'Owen flagged 1 scheduling conflict', icon: '!', color: '#FF7E5D', crewImg: IMG.owen, crewName: 'Owen' },
           ].map((item, i) => (
             <motion.div
               key={i}
@@ -466,13 +533,14 @@ function HeroCard() {
               transition={{ delay: 0.6 + i * 0.15 }}
               className="flex items-center gap-3 p-3 rounded-xl bg-blush"
             >
+              <Avatar src={item.crewImg} alt={item.crewName} size={28} ring={item.color} />
+              <div className="text-sm text-plum font-medium flex-1">{item.text}</div>
               <div
-                className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
+                className="w-5 h-5 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
                 style={{ backgroundColor: item.color }}
               >
                 {item.icon}
               </div>
-              <div className="text-sm text-plum font-medium">{item.text}</div>
             </motion.div>
           ))}
         </div>
@@ -518,10 +586,27 @@ function StatsBar() {
 
   return (
     <section className="py-16 bg-white/40 border-y border-blush-line">
-      <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
-        {STATS.map((stat, i) => (
-          <StatItem key={i} stat={stat} start={inView} />
-        ))}
+      <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Founders row */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <div className="flex -space-x-3">
+            {STATS_FOUNDERS.map((f, i) => (
+              <Avatar key={i} src={f.img} alt={f.name} size={44} ring="#FAE3E3" />
+            ))}
+            <div className="w-11 h-11 rounded-full bg-purple-1 text-white flex items-center justify-center text-xs font-bold border-2 border-blush">
+              200+
+            </div>
+          </div>
+          <div className="text-sm text-muted-plum font-medium text-center sm:text-left">
+            <span className="text-plum font-semibold">200+ young founders</span> already start their day with Hearthwork
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {STATS.map((stat, i) => (
+            <StatItem key={i} stat={stat} start={inView} />
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -609,11 +694,13 @@ function ServiceCard({ service, index }: { service: typeof SERVICES[number]; ind
         </p>
         <p className="text-sm text-plum/80 leading-relaxed">{service.desc}</p>
 
-        <div
-          className="mt-4 inline-flex items-center text-xs font-semibold transition-all group-hover:gap-2 gap-1"
-          style={{ color: accentColor }}
-        >
-          Learn more <ChevronRight className="w-3 h-3" />
+        {/* Founder using this service */}
+        <div className="mt-5 pt-4 border-t border-blush-line flex items-center gap-2.5">
+          <Avatar src={service.founder.img} alt={service.founder.name} size={28} ring={accentColor} />
+          <div className="min-w-0">
+            <div className="text-xs font-semibold text-plum truncate">{service.founder.name}</div>
+            <div className="text-[10px] text-muted-plum truncate">uses this · {service.founder.role}</div>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -724,9 +811,16 @@ function PaletteSection() {
                   </div>
                 </div>
 
-                <h3 className="font-display text-4xl font-normal leading-tight mb-3">
-                  The warmth behind your work.
-                </h3>
+                <div className="flex items-center gap-3 mb-5">
+                  <Avatar src={IMG.maya} alt="Maya" size={48} ring={current.text} />
+                  <div>
+                    <div className="text-[10px] font-bold uppercase tracking-wider opacity-70">
+                      Maya · Reviews & Replies
+                    </div>
+                    <div className="font-display text-2xl font-medium">The warmth behind your work.</div>
+                  </div>
+                </div>
+
                 <p className="text-sm opacity-80 leading-relaxed mb-6 max-w-md">
                   This is how the brand looks when <strong>{current.name}</strong> takes the
                   lead. Try clicking other swatches to see the whole palette in action.
@@ -840,12 +934,7 @@ function DashboardSection() {
                       transition={{ duration: 0.3 }}
                       className="flex items-start gap-3 p-3 rounded-xl hover:bg-blush/50 transition-colors"
                     >
-                      <div
-                        className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
-                        style={{ backgroundColor: activity.crew.color }}
-                      >
-                        {activity.crew.name[0]}
-                      </div>
+                      <Avatar src={activity.crew.img} alt={activity.crew.name} size={36} ring={activity.crew.color} />
                       <div className="flex-1 min-w-0">
                         <div className="text-sm text-plum">
                           <span className="font-semibold">{activity.crew.name}</span>{' '}
@@ -872,11 +961,12 @@ function DashboardSection() {
               <div className="space-y-3">
                 {CREW.map((member) => (
                   <div key={member.name} className="flex items-center gap-3">
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold"
-                      style={{ backgroundColor: member.color }}
-                    >
-                      {member.name[0]}
+                    <div className="relative">
+                      <Avatar src={member.img} alt={member.name} size={40} ring={member.color} />
+                      <div
+                        className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white"
+                        style={{ backgroundColor: member.color }}
+                      />
                     </div>
                     <div className="flex-1">
                       <div className="text-sm font-semibold text-plum">{member.name}</div>
@@ -953,25 +1043,42 @@ function TestimonialsSection() {
               transition={{ duration: 0.4 }}
               className="bg-white rounded-3xl shadow-xl shadow-purple-1/10 border border-blush-line p-8 lg:p-12"
             >
-              <Quote className="w-10 h-10 text-peach-1 mb-4" />
-              <p className="font-display text-2xl lg:text-3xl font-light text-plum leading-relaxed mb-8 italic">
-                &ldquo;{current.quote}&rdquo;
-              </p>
-              <div className="flex items-center gap-4">
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg"
-                  style={{ backgroundColor: current.color }}
-                >
-                  {current.avatar}
+              <div className="grid lg:grid-cols-12 gap-8 items-center">
+                {/* Founder photo */}
+                <div className="lg:col-span-4 flex justify-center lg:justify-start">
+                  <div className="relative">
+                    <img
+                      src={current.img}
+                      alt={current.name}
+                      className="w-48 h-48 lg:w-56 lg:h-56 rounded-3xl object-cover shadow-xl"
+                      style={{ border: `4px solid ${current.color}` }}
+                    />
+                    <div
+                      className="absolute -bottom-3 -right-3 px-3 py-1.5 rounded-full text-xs font-bold text-white shadow-lg"
+                      style={{ backgroundColor: current.color }}
+                    >
+                      ✓ Verified user
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div className="font-semibold text-plum">{current.name}</div>
-                  <div className="text-sm text-muted-plum">{current.role}</div>
-                </div>
-                <div className="ml-auto flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-peach-1 fill-peach-1" />
-                  ))}
+
+                {/* Quote */}
+                <div className="lg:col-span-8">
+                  <Quote className="w-10 h-10 mb-4" style={{ color: current.color }} />
+                  <p className="font-display text-2xl lg:text-3xl font-light text-plum leading-relaxed mb-8 italic">
+                    &ldquo;{current.quote}&rdquo;
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <div>
+                      <div className="font-semibold text-plum text-lg">{current.name}</div>
+                      <div className="text-sm text-muted-plum">{current.role}</div>
+                    </div>
+                    <div className="ml-auto flex gap-0.5">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star key={i} className="w-4 h-4 text-peach-1 fill-peach-1" />
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -1045,7 +1152,7 @@ function PricingSection() {
                 </span>
               </div>
 
-              <ul className="space-y-3 mb-8 flex-1">
+              <ul className="space-y-3 mb-6 flex-1">
                 {tier.features.map((feat, j) => (
                   <li key={j} className="flex items-start gap-2 text-sm">
                     <CheckCircle2
@@ -1058,9 +1165,32 @@ function PricingSection() {
                 ))}
               </ul>
 
+              {/* Founders using this tier */}
+              <div className="pb-6 border-b border-current/10">
+                <div className={`text-[10px] font-bold uppercase tracking-wider mb-2 ${tier.featured ? 'opacity-70' : 'text-muted-plum'}`}>
+                  Founders on {tier.name}
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="flex -space-x-2">
+                    {tier.founders.map((img, k) => (
+                      <Avatar
+                        key={k}
+                        src={img}
+                        alt={`Founder ${k + 1}`}
+                        size={28}
+                        ring={tier.featured ? '#8954AB' : '#FFFFFF'}
+                      />
+                    ))}
+                  </div>
+                  <span className={`text-xs font-medium ${tier.featured ? 'opacity-80' : 'text-muted-plum'}`}>
+                    +{tier.name === 'Solo' ? '120' : tier.name === 'Crew' ? '70' : '14'} others
+                  </span>
+                </div>
+              </div>
+
               <a
                 href="#top"
-                className={`inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg ${
+                className={`mt-6 inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg ${
                   tier.featured
                     ? 'bg-peach-1 text-white hover:bg-peach-1/90'
                     : 'bg-blush text-plum hover:bg-blush-sat'
@@ -1078,48 +1208,83 @@ function PricingSection() {
 }
 
 // ====================================================================
-//  FINAL CTA
+//  FINAL CTA (with founder hero image)
 // ====================================================================
 
 function FinalCTA() {
   return (
     <section className="py-24">
-      <div className="mx-auto max-w-5xl px-6 lg:px-8">
-        <div className="relative bg-gradient-to-br from-purple-1 via-purple-2 to-peach-1 rounded-[2.5rem] p-12 lg:p-16 text-center overflow-hidden">
-          {/* Decorative circles */}
-          <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-white/10 blur-2xl" />
-          <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-white/10 blur-2xl" />
-          <div className="absolute top-10 right-10 w-3 h-3 rounded-full bg-peach-2 animate-pulse" />
-          <div className="absolute bottom-10 left-10 w-2 h-2 rounded-full bg-white animate-pulse" />
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="relative bg-gradient-to-br from-purple-1 via-purple-2 to-peach-1 rounded-[2.5rem] overflow-hidden">
+          <div className="grid lg:grid-cols-2 items-center">
+            {/* Text side */}
+            <div className="p-12 lg:p-16 relative z-10">
+              {/* Decorative dots */}
+              <div className="absolute top-10 right-10 w-3 h-3 rounded-full bg-peach-2 animate-pulse" />
 
-          <div className="relative">
-            <h2 className="font-display text-4xl lg:text-6xl font-normal text-white leading-[1.05] tracking-tight">
-              Tomorrow morning could feel
-              <br />
-              <span className="italic font-light">a little lighter.</span>
-            </h2>
-            <p className="mt-6 text-lg text-white/80 max-w-xl mx-auto">
-              Sign up in 60 seconds. Wake up to your first morning report tomorrow. Free forever — upgrade only when your crew has already paid for itself.
-            </p>
-            <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href="#top"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-purple-1 font-bold rounded-full hover:shadow-2xl hover:-translate-y-0.5 transition-all"
-              >
-                Start free
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
-              <a
-                href="#dashboard"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-bold rounded-full hover:bg-white/20 transition-all border border-white/30"
-              >
-                See it work first
-              </a>
+              <h2 className="font-display text-4xl lg:text-5xl font-normal text-white leading-[1.05] tracking-tight">
+                Tomorrow morning could feel
+                <br />
+                <span className="italic font-light">a little lighter.</span>
+              </h2>
+              <p className="mt-6 text-lg text-white/85 max-w-md leading-relaxed">
+                Sign up in 60 seconds. Wake up to your first morning report tomorrow. Free forever — upgrade only when your crew has already paid for itself.
+              </p>
+              <div className="mt-9 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="#top"
+                  className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-purple-1 font-bold rounded-full hover:shadow-2xl hover:-translate-y-0.5 transition-all"
+                >
+                  Start free
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </a>
+                <a
+                  href="#dashboard"
+                  className="inline-flex items-center justify-center px-7 py-3.5 bg-white/10 backdrop-blur-sm text-white font-bold rounded-full hover:bg-white/20 transition-all border border-white/30"
+                >
+                  See it work first
+                </a>
+              </div>
+              <p className="mt-5 text-xs text-white/60 font-medium">
+                No credit card · Free forever plan · Cancel anytime
+              </p>
+
+              {/* Founder quote */}
+              <div className="mt-8 pt-6 border-t border-white/15 flex items-center gap-3">
+                <Avatar src={IMG.priya} alt="Priya" size={40} ring="#FFFFFF" />
+                <div>
+                  <div className="text-sm text-white font-semibold">Priya Shah</div>
+                  <div className="text-xs text-white/70 italic">"I wish I had found this two years ago."</div>
+                </div>
+              </div>
             </div>
-            <p className="mt-5 text-xs text-white/60 font-medium">
-              No credit card · Free forever plan · Cancel anytime
-            </p>
+
+            {/* Founder image side */}
+            <div className="relative h-80 lg:h-full min-h-[400px]">
+              <img
+                src={IMG.heroFounder}
+                alt="Young entrepreneur working happily"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              {/* Gradient overlay for blending */}
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-1/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-1/40 via-transparent to-transparent lg:bg-none" />
+
+              {/* Floating badge */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 5, repeat: Infinity }}
+                className="absolute top-8 right-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-xl"
+              >
+                <div className="text-[10px] font-bold text-muted-plum uppercase tracking-wider">Reclaimed this week</div>
+                <div className="font-display text-2xl text-gradient font-medium">23.5 hrs</div>
+              </motion.div>
+            </div>
           </div>
+
+          {/* Background decorative shapes */}
+          <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+          <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-white/10 blur-2xl pointer-events-none" />
         </div>
       </div>
     </section>
@@ -1145,6 +1310,16 @@ function Footer() {
             <p className="text-sm text-blush/70 max-w-md leading-relaxed">
               A crew that handles the busywork so humans can do the human work. Built for young founders, small business owners, and anyone who would rather spend their day on the work they love.
             </p>
+
+            {/* Founders row in footer */}
+            <div className="mt-6 flex items-center gap-3">
+              <div className="flex -space-x-2">
+                {STATS_FOUNDERS.slice(0, 5).map((f, i) => (
+                  <Avatar key={i} src={f.img} alt={f.name} size={28} ring="#2D1B2E" />
+                ))}
+              </div>
+              <span className="text-xs text-blush/60">200+ founders on board</span>
+            </div>
           </div>
 
           <div>
