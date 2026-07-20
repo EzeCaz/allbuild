@@ -24,27 +24,28 @@ import {
 } from 'lucide-react'
 
 // ====================================================================
-//  IMAGE LIBRARY (real entrepreneur portraits, OSS-hosted)
+//  IMAGE LIBRARY (European entrepreneur portraits, OSS-hosted)
+//  Founders from Barcelona, Milano, Berlin, London
 // ====================================================================
 
 const IMG = {
-  // Testimonial founders
-  priya: 'https://sfile.chatglm.cn/images-ppt/ec968c8bcb6d.jpeg',
-  marcus: 'https://sfile.chatglm.cn/images-ppt/ab44896b0dec.jpg',
-  tea: 'https://sfile.chatglm.cn/images-ppt/8e0c19b53088.jpg',
-  jordan: 'https://sfile.chatglm.cn/images-ppt/41aee99df999.jpg',
+  // Testimonial founders — one per European city
+  laia:      'https://sfile.chatglm.cn/images-ppt/b37dea8f58a9.jpg',   // Barcelona — florist
+  marco:     'https://sfile.chatglm.cn/images-ppt/4eb2c04e18c6.jpg',   // Milano — coffee roaster
+  hannah:    'https://sfile.chatglm.cn/images-ppt/e546802ef129.jpg',   // Berlin — consultant
+  olivia:    'https://sfile.chatglm.cn/images-ppt/73eeb1fc5215.jpg',   // London — studio founder
   // Service-card founders
-  cafe: 'https://sfile.chatglm.cn/images-ppt/7c62d256792f.jpg',
-  salon: 'https://sfile.chatglm.cn/images-ppt/bc81304bffd5.jpg',
-  freelancer: 'https://sfile.chatglm.cn/images-ppt/354255c73db2.jpg',
-  contractor: 'https://sfile.chatglm.cn/images-ppt/3f1f7388bded.jpg',
+  cafe:      'https://sfile.chatglm.cn/images-ppt/fd4128852086.jpg',   // Barcelona — cafe owner
+  salon:     'https://sfile.chatglm.cn/images-ppt/516830abc967.jpg',   // Milano — salon owner
+  freelancer:'https://sfile.chatglm.cn/images-ppt/867a2c88c3f0.jpg',   // Berlin — freelancer
+  contractor:'https://sfile.chatglm.cn/images-ppt/276d0f338a97.jpg',   // London — contractor
   // Crew members (Hearthwork's own specialists)
-  maya: 'https://sfile.chatglm.cn/images-ppt/116825723f1c.jpg',
-  theo: 'https://sfile.chatglm.cn/images-ppt/8cf5e1dfa4c4.jpg',
-  lena: 'https://sfile.chatglm.cn/images-ppt/215136aedf3c.jpg',
-  owen: 'https://sfile.chatglm.cn/images-ppt/7c9e8cac327b.jpg',
-  // Hero CTA founder
-  heroFounder: 'https://sfile.chatglm.cn/images-ppt/fe3a3e03b317.jpg',
+  maya:      'https://sfile.chatglm.cn/images-ppt/aa4ff7b764fc.jpg',
+  theo:      'https://sfile.chatglm.cn/images-ppt/27d244dd8528.png',
+  lena:      'https://sfile.chatglm.cn/images-ppt/58aade9f8461.jpeg',
+  owen:      'https://sfile.chatglm.cn/images-ppt/c0efa07d4114.jpg',
+  // Hero CTA founder — European lifestyle
+  heroFounder: 'https://sfile.chatglm.cn/images-ppt/9170f404a3ca.jpg',
 } as const
 
 // ====================================================================
@@ -58,7 +59,7 @@ const SERVICES = [
     origin: 'Originally: The Orchestrator',
     desc: 'Nothing falls through the cracks. Every task picked up by the right crew member, every time.',
     accent: 'peach',
-    founder: { name: 'Sofia', role: 'Cafe owner', img: IMG.cafe },
+    founder: { name: 'Sofia', role: 'Cafe owner · Barcelona', img: IMG.cafe },
   },
   {
     icon: Heart,
@@ -66,7 +67,7 @@ const SERVICES = [
     origin: 'Originally: Pule',
     desc: 'We remember your customers, suppliers, and team — so you never explain a relationship twice.',
     accent: 'purple',
-    founder: { name: 'Nina', role: 'Salon owner', img: IMG.salon },
+    founder: { name: 'Giulia', role: 'Salon owner · Milano', img: IMG.salon },
   },
   {
     icon: FileText,
@@ -74,7 +75,7 @@ const SERVICES = [
     origin: 'Originally: Albert',
     desc: 'Documents, meetings, and notes become a searchable library the whole crew can draw on.',
     accent: 'purple',
-    founder: { name: 'Eli', role: 'Freelance designer', img: IMG.freelancer },
+    founder: { name: 'Lena', role: 'Freelance designer · Berlin', img: IMG.freelancer },
   },
   {
     icon: Zap,
@@ -82,7 +83,7 @@ const SERVICES = [
     origin: 'Originally: Always-on Services',
     desc: 'Background helpers keep working when you are not. Scheduled tasks, monitoring, follow-ups.',
     accent: 'peach',
-    founder: { name: 'Diego', role: 'Contractor', img: IMG.contractor },
+    founder: { name: 'Felix', role: 'Contractor · London', img: IMG.contractor },
   },
   {
     icon: Calendar,
@@ -90,7 +91,7 @@ const SERVICES = [
     origin: 'Originally: Tool Integrations',
     desc: 'We plug into the apps you already use — email, calendar, tasks, messaging, content.',
     accent: 'purple',
-    founder: { name: 'Priya', role: 'Florist', img: IMG.priya },
+    founder: { name: 'Laia', role: 'Florist · Barcelona', img: IMG.laia },
   },
   {
     icon: Sparkles,
@@ -98,7 +99,7 @@ const SERVICES = [
     origin: 'Originally: Operator Dashboard',
     desc: 'One calm screen for what is done, what is in progress, and what needs your eyes.',
     accent: 'peach',
-    founder: { name: 'Marcus', role: 'Coffee roaster', img: IMG.marcus },
+    founder: { name: 'Marco', role: 'Coffee roaster · Milano', img: IMG.marco },
   },
   {
     icon: CheckCircle2,
@@ -106,7 +107,7 @@ const SERVICES = [
     origin: 'Originally: Review Workflows',
     desc: 'Nothing important ships without your say-so. Your crew checks its work and waits for your nod.',
     accent: 'purple',
-    founder: { name: 'Téa', role: 'Consultant', img: IMG.tea },
+    founder: { name: 'Hannah', role: 'Consultant · Berlin', img: IMG.hannah },
   },
   {
     icon: Mail,
@@ -114,7 +115,7 @@ const SERVICES = [
     origin: 'Originally: Agent Personas',
     desc: 'Specialist teammates, each with a role — scheduling, follow-ups, research, bookkeeping.',
     accent: 'peach',
-    founder: { name: 'Jordan', role: 'Studio founder', img: IMG.jordan },
+    founder: { name: 'Olivia', role: 'Studio founder · London', img: IMG.olivia },
   },
 ] as const
 
@@ -159,44 +160,44 @@ const TESTIMONIALS = [
   {
     quote:
       'My mornings used to start with dread — 30 unread emails, three forgotten follow-ups. Now I wake up and Maya has already drafted the replies. I just say yes or no.',
-    name: 'Priya Shah',
-    role: 'Founder, Sunday Bloom Florals',
-    img: IMG.priya,
+    name: 'Laia Puig',
+    role: 'Founder, Flors de Barcelona · Barcelona',
+    img: IMG.laia,
     color: '#F33167',
   },
   {
     quote:
       "I run a two-person coffee roastery. We don't have a marketing team. Hearthwork is our marketing team. It posts, it replies, it follows up — I just taste the coffee.",
-    name: 'Marcus Reyes',
-    role: 'Co-owner, Northbound Roasters',
-    img: IMG.marcus,
+    name: 'Marco Rinaldi',
+    role: 'Co-owner, Torrefazione Milano · Milano',
+    img: IMG.marco,
     color: '#8954AB',
   },
   {
     quote:
       'I was skeptical. Every "AI assistant" I tried before felt like a chatbot pretending to be a person. This is the first one that feels like a coworker who actually gets it.',
-    name: 'Téa Levesque',
-    role: 'Solo consultant, Levesque Strategy',
-    img: IMG.tea,
+    name: 'Hannah Weber',
+    role: 'Solo consultant, Weber Strategy · Berlin',
+    img: IMG.hannah,
     color: '#FF7E5D',
   },
   {
     quote:
       'I hired Hearthwork to do admin. Six weeks later it is doing customer research, draft proposals, and weekly retrospectives. I did not ask for any of that. It just kept showing up.',
-    name: 'Jordan Okafor',
-    role: 'Founder, Loop Studio',
-    img: IMG.jordan,
+    name: 'Olivia Bennett',
+    role: 'Founder, Loop Studio · London',
+    img: IMG.olivia,
     color: '#B464AD',
   },
 ]
 
 const STATS_FOUNDERS = [
-  { name: 'Priya', img: IMG.priya },
-  { name: 'Marcus', img: IMG.marcus },
-  { name: 'Téa', img: IMG.tea },
-  { name: 'Jordan', img: IMG.jordan },
+  { name: 'Laia', img: IMG.laia },
+  { name: 'Marco', img: IMG.marco },
+  { name: 'Hannah', img: IMG.hannah },
+  { name: 'Olivia', img: IMG.olivia },
   { name: 'Sofia', img: IMG.cafe },
-  { name: 'Nina', img: IMG.salon },
+  { name: 'Giulia', img: IMG.salon },
 ]
 
 const PRICING = [
@@ -225,7 +226,7 @@ const PRICING = [
     ],
     cta: 'Start 14-day trial',
     featured: true,
-    founders: [IMG.priya, IMG.marcus, IMG.tea, IMG.jordan, IMG.contractor],
+    founders: [IMG.laia, IMG.marco, IMG.hannah, IMG.olivia, IMG.contractor],
   },
   {
     name: 'Studio',
@@ -241,7 +242,7 @@ const PRICING = [
     ],
     cta: 'Book a call',
     featured: false,
-    founders: [IMG.jordan, IMG.marcus],
+    founders: [IMG.olivia, IMG.marco],
   },
 ]
 
@@ -504,12 +505,12 @@ function HeroCard() {
       <div className="relative bg-white rounded-3xl shadow-2xl shadow-purple-1/15 p-6 border border-white">
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-3">
-            <Avatar src={IMG.priya} alt="Priya" size={44} ring="#F33167" />
+            <Avatar src={IMG.laia} alt="Laia" size={44} ring="#F33167" />
             <div>
               <div className="text-xs font-semibold text-muted-plum tracking-wider uppercase">
                 Tuesday morning
               </div>
-              <div className="font-display text-lg text-plum">Good morning, Priya.</div>
+              <div className="font-display text-lg text-plum">Good morning, Laia.</div>
             </div>
           </div>
           <div className="flex -space-x-2">
@@ -551,7 +552,7 @@ function HeroCard() {
             <span className="text-peach-1 font-semibold">1 sign-off</span>
           </div>
           <div className="mt-2 p-3 rounded-xl bg-peach-1/10 border border-peach-1/30">
-            <div className="text-sm font-semibold text-plum">Reply to Marcus re: wholesale order</div>
+            <div className="text-sm font-semibold text-plum">Reply to Marco re: wholesale order</div>
             <div className="text-xs text-muted-plum mt-0.5">Drafted by Maya · 2 min ago</div>
           </div>
         </div>
@@ -598,7 +599,7 @@ function StatsBar() {
             </div>
           </div>
           <div className="text-sm text-muted-plum font-medium text-center sm:text-left">
-            <span className="text-plum font-semibold">200+ young founders</span> already start their day with Hearthwork
+            <span className="text-plum font-semibold">200+ young founders across Europe</span> already start their day with Hearthwork
           </div>
         </div>
 
@@ -1251,9 +1252,9 @@ function FinalCTA() {
 
               {/* Founder quote */}
               <div className="mt-8 pt-6 border-t border-white/15 flex items-center gap-3">
-                <Avatar src={IMG.priya} alt="Priya" size={40} ring="#FFFFFF" />
+                <Avatar src={IMG.laia} alt="Laia" size={40} ring="#FFFFFF" />
                 <div>
-                  <div className="text-sm text-white font-semibold">Priya Shah</div>
+                  <div className="text-sm text-white font-semibold">Laia Puig</div>
                   <div className="text-xs text-white/70 italic">"I wish I had found this two years ago."</div>
                 </div>
               </div>
@@ -1318,7 +1319,7 @@ function Footer() {
                   <Avatar key={i} src={f.img} alt={f.name} size={28} ring="#2D1B2E" />
                 ))}
               </div>
-              <span className="text-xs text-blush/60">200+ founders on board</span>
+              <span className="text-xs text-blush/60">200+ European founders on board</span>
             </div>
           </div>
 
