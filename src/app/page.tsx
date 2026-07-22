@@ -109,11 +109,11 @@ const CREW_ACTIVITIES = [
 
 const TESTIMONIALS = [
   { quote: 'My mornings used to start with dread — 30 unread emails, three forgotten follow-ups. Now I wake up and Maya has already drafted the replies. I just say yes or no.', name: 'Laia Puig', role: 'Founder, Flors de Barcelona · Barcelona', img: IMG.laia, color: '#F33167' },
-  { quote: "I run a two-person coffee roastery. We don't have a marketing team. Hearthwork is our marketing team. It posts, it replies, it follows up — I just taste the coffee.", name: 'Marco Rinaldi', role: 'Co-owner, Torrefazione Milano · Milano', img: IMG.marco, color: '#8954AB' },
-  { quote: 'We hit Series A and I was drowning — investor updates, hiring pipelines, customer research, all on me. Hearthwork became my chief of staff overnight. I closed our next round without burning out.', name: 'Viktor Mayer', role: 'CEO, Flowstate (Series A SaaS) · Berlin', img: IMG.viktor, color: '#8954AB' },
+  { quote: "I run a two-person coffee roastery. We don't have a marketing team. Allbuild is our marketing team. It posts, it replies, it follows up — I just taste the coffee.", name: 'Marco Rinaldi', role: 'Co-owner, Torrefazione Milano · Milano', img: IMG.marco, color: '#8954AB' },
+  { quote: 'We hit Series A and I was drowning — investor updates, hiring pipelines, customer research, all on me. Allbuild became my chief of staff overnight. I closed our next round without burning out.', name: 'Viktor Mayer', role: 'CEO, Flowstate (Series A SaaS) · Berlin', img: IMG.viktor, color: '#8954AB' },
   { quote: 'I was skeptical. Every "AI assistant" I tried before felt like a chatbot pretending to be a person. This is the first one that feels like a coworker who actually gets it.', name: 'Hannah Weber', role: 'Solo consultant, Weber Strategy · Berlin', img: IMG.hannah, color: '#FF7E5D' },
-  { quote: 'I run AI infra. The irony of being drowned in ops work while building automation for others was not lost on me. Hearthwork runs my investor reporting, my hiring screen, my weekly retros. I ship product again.', name: 'Amara Okafor', role: 'Founder, Nexus AI · London', img: IMG.amara, color: '#F33167' },
-  { quote: 'I hired Hearthwork to do admin. Six weeks later it is doing customer research, draft proposals, and weekly retrospectives. I did not ask for any of that. It just kept showing up.', name: 'Olivia Bennett', role: 'Founder, Loop Studio · London', img: IMG.olivia, color: '#B464AD' },
+  { quote: 'I run AI infra. The irony of being drowned in ops work while building automation for others was not lost on me. Allbuild runs my investor reporting, my hiring screen, my weekly retros. I ship product again.', name: 'Amara Okafor', role: 'Founder, Nexus AI · London', img: IMG.amara, color: '#F33167' },
+  { quote: 'I hired Allbuild to do admin. Six weeks later it is doing customer research, draft proposals, and weekly retrospectives. I did not ask for any of that. It just kept showing up.', name: 'Olivia Bennett', role: 'Founder, Loop Studio · London', img: IMG.olivia, color: '#B464AD' },
 ]
 
 const STATS_FOUNDERS = [
@@ -168,6 +168,39 @@ function Avatar({ src, alt, size = 36, ring = '#FFFFFF', className = '' }: { src
 }
 
 // ====================================================================
+//  LOGO — Allbuild mark (ascending blocks in brand gradient)
+//  Three rounded blocks rising in height = "build" + "all coming together"
+// ====================================================================
+
+function Logo({ size = 32, className = '' }: { size?: number; className?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Allbuild logo"
+    >
+      <defs>
+        <linearGradient id="allbuild-grad" x1="0" y1="40" x2="40" y2="0" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#8954AB" />
+          <stop offset="0.55" stopColor="#B464AD" />
+          <stop offset="1" stopColor="#F33167" />
+        </linearGradient>
+      </defs>
+      {/* Three ascending rounded blocks — shortest to tallest, like building floors going up */}
+      <rect x="4"  y="22" width="8" height="14" rx="2.5" fill="url(#allbuild-grad)" opacity="0.55" />
+      <rect x="16" y="14" width="8" height="22" rx="2.5" fill="url(#allbuild-grad)" opacity="0.8" />
+      <rect x="28" y="4"  width="8" height="32" rx="2.5" fill="url(#allbuild-grad)" />
+      {/* Small accent dot — the "spark" of the crew */}
+      <circle cx="32" cy="9" r="1.8" fill="#FFFFFF" opacity="0.95" />
+    </svg>
+  )
+}
+
+// ====================================================================
 //  STICKY NAV
 // ====================================================================
 
@@ -192,10 +225,8 @@ function StickyNav() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-blush/85 backdrop-blur-xl border-b border-blush-line shadow-sm' : 'bg-transparent'}`}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8 flex items-center justify-between h-16">
         <a href="#top" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-1 to-peach-1 flex items-center justify-center group-hover:scale-110 transition-transform">
-            <div className="w-3 h-3 rounded-full bg-white" />
-          </div>
-          <span className="font-display text-xl font-medium text-plum tracking-tight">Hearthwork</span>
+          <Logo size={32} className="group-hover:scale-110 transition-transform" />
+          <span className="font-display text-xl font-medium text-plum tracking-tight">Allbuild</span>
         </a>
         <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
@@ -363,7 +394,7 @@ function StatsBar() {
             <div className="w-11 h-11 rounded-full bg-purple-1 text-white flex items-center justify-center text-xs font-bold border-2 border-blush">200+</div>
           </div>
           <div className="text-sm text-muted-plum font-medium text-center sm:text-left">
-            <span className="text-plum font-semibold">200+ young founders across Europe</span> already start their day with Hearthwork
+            <span className="text-plum font-semibold">200+ young founders across Europe</span> already start their day with Allbuild
           </div>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -748,7 +779,7 @@ function TestimonialsSection() {
   return (
     <section id="founders" className="py-24 bg-white/40 border-y border-blush-line">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
-        <SectionHeader tag="Why these founders trust us" align="center" title={<>They did not buy <span className="italic font-light text-gradient-peach">what</span> we do.<br />They bought <span className="italic font-light text-gradient">why</span> we do it.</>} subtitle="These are not made-up personas. They are the kinds of people who use Hearthwork every day — and what they actually say about it." />
+        <SectionHeader tag="Why these founders trust us" align="center" title={<>They did not buy <span className="italic font-light text-gradient-peach">what</span> we do.<br />They bought <span className="italic font-light text-gradient">why</span> we do it.</>} subtitle="These are not made-up personas. They are the kinds of people who use Allbuild every day — and what they actually say about it." />
         <div className="mt-14 relative">
           <AnimatePresence mode="wait">
             <motion.div key={idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }} className="bg-white rounded-3xl shadow-xl shadow-purple-1/10 border border-blush-line p-8 lg:p-12">
@@ -858,7 +889,7 @@ function FinalCTA() {
                 Tomorrow morning could feel<br /><span className="italic font-light">a little lighter.</span>
               </h2>
               <p className="mt-6 text-lg text-plum/85 max-w-md leading-relaxed">
-                We believe the work people love is precious. We built Hearthwork to give that work back to the people who do it. Sign up in 60 seconds. Wake up tomorrow to your first morning report.
+                We believe the work people love is precious. We built Allbuild to give that work back to the people who do it. Sign up in 60 seconds. Wake up tomorrow to your first morning report.
               </p>
               <div className="mt-9 flex flex-col sm:flex-row gap-3">
                 <a href="#top" className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-purple-1 font-bold rounded-full hover:shadow-2xl hover:-translate-y-0.5 transition-all">Start free<ArrowRight className="w-4 h-4 ml-2" /></a>
@@ -902,10 +933,8 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-2 to-peach-1 flex items-center justify-center">
-                <div className="w-3 h-3 rounded-full bg-white" />
-              </div>
-              <span className="font-display text-xl font-medium">Hearthwork</span>
+              <Logo size={32} />
+              <span className="font-display text-xl font-medium">Allbuild</span>
             </div>
             <p className="text-sm text-blush/70 max-w-md leading-relaxed mb-4">
               We believe small business owners shouldn't have to choose between the work they love and the work that pays for it. So we built a crew that handles the busywork — so they can do the human work.
@@ -940,7 +969,7 @@ function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-blush/15 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-blush/60">© 2026 Hearthwork. A brand that shows up warm.</p>
+          <p className="text-xs text-blush/60">© 2026 Allbuild. A brand that shows up warm.</p>
           <p className="text-xs text-blush/60 italic font-display">— a warm start for the work ahead</p>
         </div>
       </div>

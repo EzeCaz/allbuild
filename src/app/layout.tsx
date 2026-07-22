@@ -17,20 +17,20 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Hearthwork — A crew that handles the busywork",
+  title: "Allbuild — A crew that handles the busywork",
   description:
-    "Hearthwork is your always-on crew for small business. We handle the follow-ups, the scheduling, the busywork — so you can do the human work.",
+    "Allbuild is your always-on crew for small business. We handle the follow-ups, the scheduling, the busywork — so you can do the human work.",
   keywords: [
-    "Hearthwork",
+    "Allbuild",
     "AI crew",
     "small business",
     "entrepreneurs",
     "automation",
     "workflow",
   ],
-  authors: [{ name: "Hearthwork" }],
+  authors: [{ name: "Allbuild" }],
   openGraph: {
-    title: "Hearthwork — A crew that handles the busywork",
+    title: "Allbuild — A crew that handles the busywork",
     description:
       "Your always-on crew for small business. Warm, human, and quietly competent.",
     type: "website",
