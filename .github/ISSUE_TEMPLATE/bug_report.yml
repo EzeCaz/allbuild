@@ -1,0 +1,104 @@
+name: 🐛 Bug report
+description: Report something that's broken or behaving unexpectedly
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report! Please fill out the sections below so we can reproduce and fix it quickly.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug. What did you expect to happen? What actually happened?
+      placeholder: "Expected: clicking the 'Start free' button scrolls to pricing. Actual: nothing happens."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: A numbered list of steps we can follow to see the bug.
+      placeholder: |
+        1. Go to '/'
+        2. Scroll to the pricing section
+        3. Click 'Get started' on the Crew tier
+        4. Observe...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: section
+    attributes:
+      label: Which section is affected?
+      options:
+        - Hero
+        - Stats bar
+        - The Why (#why)
+        - The Who (#who)
+        - The How (#how)
+        - The Flow (#flow)
+        - The What / Services (#what)
+        - Dashboard (#dashboard)
+        - Testimonials (#founders)
+        - Pricing (#pricing)
+        - Final CTA
+        - Footer
+        - Navigation
+        - Mobile responsive
+        - Other / whole page
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Chrome
+        - Safari
+        - Firefox
+        - Edge
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device type
+      options:
+        - Desktop
+        - Tablet
+        - Mobile (iOS)
+        - Mobile (Android)
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / screen recording
+      description: Drag and drop images or paste a Loom link. Visual bugs especially benefit from this.
+    validations:
+      required: false
+
+  - type: input
+    id: url
+    attributes:
+      label: URL where the bug occurred
+      placeholder: "https://allbuild.vercel.app/  or  http://localhost:3000/"
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console errors (if any)
+      description: Open DevTools → Console, copy any red errors here.
+      render: shell
+    validations:
+      required: false

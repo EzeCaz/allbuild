@@ -1,0 +1,78 @@
+name: ✨ Feature request
+description: Suggest a new feature or improvement
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea! Tell us what you'd like to see added or changed.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: What are you trying to do that the current page doesn't let you? What's frustrating about the current behavior?
+      placeholder: "I want visitors to be able to filter testimonials by city, because right now they have to wait for the auto-rotate to land on a founder from their region."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: What's your proposed solution?
+      description: Describe the feature as concretely as you can. Mockups, sketches, or example copy all help.
+      placeholder: "Add a row of city pills (Barcelona / Milano / Berlin / London / All) above the testimonial card. Clicking one filters the rotation."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: section
+    attributes:
+      label: Which section would this affect?
+      options:
+        - Hero
+        - Stats bar
+        - The Why (#why)
+        - The Who (#who)
+        - The How (#how)
+        - The Flow (#flow)
+        - The What / Services (#what)
+        - Dashboard (#dashboard)
+        - Testimonials (#founders)
+        - Pricing (#pricing)
+        - Final CTA
+        - Footer
+        - Navigation
+        - New section (please describe in solution)
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this?
+      options:
+        - 🔥 Critical — blocking a launch or sale
+        - ⭐ High — would meaningfully improve conversion
+        - 🟢 Medium — nice to have
+        - 💭 Low — just an idea
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've considered
+      description: Any other ways you thought about solving this?
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else relevant — links to inspiration, competitor examples, customer feedback, etc.
+    validations:
+      required: false
