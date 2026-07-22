@@ -23,6 +23,7 @@ import {
   Repeat,
   HandHeart,
 } from 'lucide-react'
+import { OnboardingModal } from '@/components/onboarding-modal'
 
 // ====================================================================
 //  IMAGE LIBRARY (European entrepreneur portraits, OSS-hosted)
@@ -204,7 +205,7 @@ function Logo({ size = 32, className = '' }: { size?: number; className?: string
 //  STICKY NAV
 // ====================================================================
 
-function StickyNav() {
+function StickyNav({ onGetStarted }: { onGetStarted: () => void }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   useEffect(() => {
@@ -234,7 +235,7 @@ function StickyNav() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <a href="#pricing" className="hidden sm:inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-purple-1 hover:bg-purple-2 rounded-full transition-all hover:shadow-lg hover:shadow-purple-1/30">Start free <ArrowRight className="w-3.5 h-3.5 ml-1.5" /></a>
+          <button onClick={onGetStarted} className="hidden sm:inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-purple-1 hover:bg-purple-2 rounded-full transition-all hover:shadow-lg hover:shadow-purple-1/30">Get started <ArrowRight className="w-3.5 h-3.5 ml-1.5" /></button>
           <button className="md:hidden p-2 text-plum" onClick={() => setMenuOpen((v) => !v)} aria-label="Toggle menu">{menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}</button>
         </div>
       </div>
@@ -259,7 +260,7 @@ function StickyNav() {
 
 const ROTATING_WORDS = ['crew', 'team', 'squad', 'staff']
 
-function Hero() {
+function Hero({ onGetStarted }: { onGetStarted: () => void }) {
   const [wordIdx, setWordIdx] = useState(0)
   useEffect(() => {
     const t = setInterval(() => { setWordIdx((i) => (i + 1) % ROTATING_WORDS.length) }, 2000)
@@ -313,7 +314,7 @@ function Hero() {
           </p>
 
           <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-            <a href="#pricing" className="inline-flex items-center justify-center px-7 py-3.5 bg-peach-1 hover:bg-peach-1/90 text-white font-semibold rounded-full transition-all hover:shadow-xl hover:shadow-peach-1/30 hover:-translate-y-0.5 animate-pulse-glow">Start free <ArrowRight className="w-4 h-4 ml-2" /></a>
+            <button onClick={onGetStarted} className="inline-flex items-center justify-center px-7 py-3.5 bg-peach-1 hover:bg-peach-1/90 text-white font-semibold rounded-full transition-all hover:shadow-xl hover:shadow-peach-1/30 hover:-translate-y-0.5 animate-pulse-glow">Get started <ArrowRight className="w-4 h-4 ml-2" /></button>
             <a href="#flow" className="inline-flex items-center justify-center px-7 py-3.5 bg-white/70 backdrop-blur-sm hover:bg-white text-plum font-semibold rounded-full transition-all border border-white/80 hover:shadow-lg"><Play className="w-4 h-4 mr-2" /> See the crew in action</a>
           </div>
           <p className="mt-5 text-xs text-muted-plum font-medium tracking-wide">No credit card · Free forever plan · Cancel anytime</p>
@@ -823,7 +824,7 @@ function TestimonialsSection() {
 //  PRICING SECTION
 // ====================================================================
 
-function PricingSection() {
+function PricingSection({ onGetStarted }: { onGetStarted: () => void }) {
   return (
     <section id="pricing" className="py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -859,9 +860,9 @@ function PricingSection() {
                   <span className="text-xs font-medium" style={tier.featured ? { color: '#F33167', opacity: 0.85 } : undefined}>+{tier.name === 'Solo' ? '120' : tier.name === 'Crew' ? '70' : '14'} others</span>
                 </div>
               </div>
-              <a href="#top" className={`mt-6 inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg ${tier.featured ? 'hover:opacity-90' : 'bg-blush text-plum hover:bg-blush-sat'}`} style={tier.featured ? { backgroundColor: '#F33167', color: '#FFFFFF' } : undefined}>
+              <button onClick={onGetStarted} className={`mt-6 inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg ${tier.featured ? 'hover:opacity-90' : 'bg-blush text-plum hover:bg-blush-sat'}`} style={tier.featured ? { backgroundColor: '#F33167', color: '#FFFFFF' } : undefined}>
                 {tier.cta}<ArrowRight className="w-4 h-4 ml-2" />
-              </a>
+              </button>
             </motion.div>
           ))}
         </div>
@@ -874,7 +875,7 @@ function PricingSection() {
 //  FINAL CTA — plum text (not white)
 // ====================================================================
 
-function FinalCTA() {
+function FinalCTA({ onGetStarted }: { onGetStarted: () => void }) {
   return (
     <section className="py-24">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
@@ -892,7 +893,7 @@ function FinalCTA() {
                 We believe the work people love is precious. We built Allbuild to give that work back to the people who do it. Sign up in 60 seconds. Wake up tomorrow to your first morning report.
               </p>
               <div className="mt-9 flex flex-col sm:flex-row gap-3">
-                <a href="#top" className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-purple-1 font-bold rounded-full hover:shadow-2xl hover:-translate-y-0.5 transition-all">Start free<ArrowRight className="w-4 h-4 ml-2" /></a>
+                <button onClick={onGetStarted} className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-purple-1 font-bold rounded-full hover:shadow-2xl hover:-translate-y-0.5 transition-all">Get started<ArrowRight className="w-4 h-4 ml-2" /></button>
                 <a href="#what" className="inline-flex items-center justify-center px-7 py-3.5 bg-white/40 backdrop-blur-sm text-plum font-bold rounded-full hover:bg-white/60 transition-all border border-white/60">See what we built</a>
               </div>
               <p className="mt-5 text-xs text-plum/70 font-medium">No credit card · Free forever plan · Cancel anytime</p>
@@ -982,11 +983,15 @@ function Footer() {
 // ====================================================================
 
 export default function Home() {
+  const [onboardingOpen, setOnboardingOpen] = useState(false)
+  const openOnboarding = () => setOnboardingOpen(true)
+  const closeOnboarding = () => setOnboardingOpen(false)
+
   return (
     <div className="min-h-screen flex flex-col bg-blush">
-      <StickyNav />
+      <StickyNav onGetStarted={openOnboarding} />
       <main className="flex-1">
-        <Hero />
+        <Hero onGetStarted={openOnboarding} />
         <StatsBar />
         <WhySection />
         <WhoSection />
@@ -995,10 +1000,11 @@ export default function Home() {
         <WhatSection />
         <DashboardSection />
         <TestimonialsSection />
-        <PricingSection />
-        <FinalCTA />
+        <PricingSection onGetStarted={openOnboarding} />
+        <FinalCTA onGetStarted={openOnboarding} />
       </main>
       <Footer />
+      <OnboardingModal open={onboardingOpen} onClose={closeOnboarding} />
     </div>
   )
 }
