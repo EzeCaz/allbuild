@@ -169,35 +169,23 @@ function Avatar({ src, alt, size = 36, ring = '#FFFFFF', className = '' }: { src
 }
 
 // ====================================================================
-//  LOGO — Allbuild mark (ascending blocks in brand gradient)
-//  Three rounded blocks rising in height = "build" + "all coming together"
+//  LOGO — Allbuild mark (official PNG logo)
+//  Source: /public/allbuild-logo.png (784×644, ~4:3.3 aspect)
 // ====================================================================
 
 function Logo({ size = 32, className = '' }: { size?: number; className?: string }) {
+  // PNG is 784×644 → aspect ratio ~1.217:1 (width:height)
+  // At `size` px tall, width = size * 1.217
+  const width = Math.round(size * (784 / 644))
   return (
-    <svg
-      width={size}
+    <img
+      src="/allbuild-logo.png"
+      alt="Allbuild logo"
+      width={width}
       height={size}
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       className={className}
-      aria-label="Allbuild logo"
-    >
-      <defs>
-        <linearGradient id="allbuild-grad" x1="0" y1="40" x2="40" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#8954AB" />
-          <stop offset="0.55" stopColor="#B464AD" />
-          <stop offset="1" stopColor="#F33167" />
-        </linearGradient>
-      </defs>
-      {/* Three ascending rounded blocks — shortest to tallest, like building floors going up */}
-      <rect x="4"  y="22" width="8" height="14" rx="2.5" fill="url(#allbuild-grad)" opacity="0.55" />
-      <rect x="16" y="14" width="8" height="22" rx="2.5" fill="url(#allbuild-grad)" opacity="0.8" />
-      <rect x="28" y="4"  width="8" height="32" rx="2.5" fill="url(#allbuild-grad)" />
-      {/* Small accent dot — the "spark" of the crew */}
-      <circle cx="32" cy="9" r="1.8" fill="#FFFFFF" opacity="0.95" />
-    </svg>
+      style={{ width, height: size, objectFit: 'contain' }}
+    />
   )
 }
 

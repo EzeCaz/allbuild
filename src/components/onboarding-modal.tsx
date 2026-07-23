@@ -121,6 +121,7 @@ export function OnboardingModal({ open, onClose }: { open: boolean; onClose: () 
   const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState('')
   const [userTz] = useState(getUserTimezone)
+  const [meetLink, setMeetLink] = useState<string | null>(null)
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -146,6 +147,7 @@ export function OnboardingModal({ open, onClose }: { open: boolean; onClose: () 
       const t = setTimeout(() => {
         setStatus('idle')
         setErrorMsg('')
+        setMeetLink(null)
       }, 300)
       return () => clearTimeout(t)
     }
@@ -179,6 +181,13 @@ export function OnboardingModal({ open, onClose }: { open: boolean; onClose: () 
     setStatus('submitting')
     setErrorMsg('')
 
+    // Normalize business URL: auto-prepend https:// if the user typed a bare
+    // domain like "massapro.com" or "www.massapro.com". Empty stays empty.
+    let normalizedUrl = businessUrl.trim()
+    if (normalizedUrl && !/^https?:\/\//i.test(normalizedUrl)) {
+      normalizedUrl = `https://${normalizedUrl}`
+    }
+
     try {
       const res = await fetch('/api/onboarding', {
         method: 'POST',
@@ -187,9 +196,11 @@ export function OnboardingModal({ open, onClose }: { open: boolean; onClose: () 
           firstName: firstName.trim(),
           lastName: lastName.trim(),
           email: email.trim(),
-          businessUrl: businessUrl.trim(),
+          businessUrl: normalizedUrl,
           date,
-          slot: selectedSlot?.ukLabel || '',
+          ukStartHour: selectedSlot?.ukStart,
+          ukEndHour: selectedSlot?.ukEnd,
+          ukSlotLabel: selectedSlot?.ukLabel || '',
           slotLocalLabel,
         }),
       })
@@ -201,6 +212,10 @@ export function OnboardingModal({ open, onClose }: { open: boolean; onClose: () 
       // the user's email client with the prefilled message.
       if (data.fallback === 'mailto' && data.mailtoLink) {
         window.location.href = data.mailtoLink
+      }
+      // Capture Meet link if Google integration created one
+      if (data.meetLink) {
+        setMeetLink(data.meetLink)
       }
       setStatus('success')
     } catch (err) {
@@ -261,6 +276,7 @@ export function OnboardingModal({ open, onClose }: { open: boolean; onClose: () 
                   slotLabel={selectedSlot?.ukLabel || ''}
                   slotLocalLabel={slotLocalLabel}
                   userTz={userTz}
+                  meetLink={meetLink}
                   onClose={onClose}
                 />
               ) : (
@@ -304,10 +320,10 @@ export function OnboardingModal({ open, onClose }: { open: boolean; onClose: () 
                   {/* Business URL */}
                   <Field label="Business URL" optional>
                     <input
-                      type="url"
+                      type="text"
                       value={businessUrl}
                       onChange={(e) => setBusinessUrl(e.target.value)}
-                      placeholder="https://florsdebarcelona.com"
+                      placeholder="massapro.com"
                       className="w-full px-3.5 py-2.5 rounded-xl border border-blush-line bg-blush/30 text-plum placeholder:text-muted-plum/50 focus:outline-none focus:border-purple-1 focus:ring-2 focus:ring-purple-1/20 transition-all text-sm"
                     />
                   </Field>
@@ -440,6 +456,7 @@ function SuccessState({
   slotLabel,
   slotLocalLabel,
   userTz,
+  meetLink,
   onClose,
 }: {
   firstName: string
@@ -447,6 +464,7 @@ function SuccessState({
   slotLabel: string
   slotLocalLabel: string
   userTz: string
+  meetLink: string | null
   onClose: () => void
 }) {
   const dateDisplay = useMemo(() => {
@@ -475,8 +493,31 @@ function SuccessState({
         Thanks, {firstName}.
       </p>
       <p className="text-sm text-muted-plum mb-6">
-        Your request is on its way to our team. If your email client opened, just hit send — that delivers it to <span className="font-semibold">sales@massapro.com</span>. We'll email you a calendar invite within 24 hours.
+        {meetLink ? (
+          <>Your call is booked. A calendar invite + confirmation email from <span className="font-semibold">sales@massapro.com</span> is on its way to your inbox.</>
+        ) : (
+          <>Your request is on its way to our team. If your email client opened, just hit send — that delivers it to <span className="font-semibold">sales@massapro.com</span>. We'll email you a calendar invite within 24 hours.</>
+        )}
       </p>
+
+      {/* Google Meet link — shown when Google integration created the event */}
+      {meetLink && (
+        <motion.a
+          href={meetLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="block w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg mb-4"
+          style={{ backgroundColor: '#F33167' }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 7H17V5C17 3.9 16.1 3 15 3H9C7.9 3 7 3.9 7 5V7H3C1.9 7 1 7.9 1 9V19C1 20.1 1.9 21 3 21H21C22.1 21 23 20.1 23 19V9C23 7.9 22.1 7 21 7ZM9 5H15V7H9V5ZM15 17H9V11H15V17ZM17 17V11H21V17H17ZM3 11H7V17H3V11Z" fill="currentColor"/>
+          </svg>
+          Join with Google Meet
+        </motion.a>
+      )}
 
       <div className="bg-blush/40 rounded-2xl p-4 text-left mb-6">
         <div className="text-[10px] font-bold uppercase tracking-wider text-muted-plum mb-2">Your booking</div>
@@ -499,6 +540,12 @@ function SuccessState({
             <span className="text-muted-plum">Timezone</span>
             <span className="font-semibold text-plum text-xs">{userTz}</span>
           </div>
+          {meetLink && (
+            <div className="pt-2 mt-2 border-t border-blush-line">
+              <div className="text-[10px] text-muted-plum mb-1">Meet link (save it!)</div>
+              <div className="text-xs font-mono text-purple-1 break-all">{meetLink}</div>
+            </div>
+          )}
         </div>
       </div>
 

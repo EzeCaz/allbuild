@@ -1,36 +1,30 @@
 import { NextResponse } from "next/server";
+import { isGoogleConfigured, createCalendarEventWithMeet, sendConfirmationEmail } from "@/lib/google";
 
 /**
  * POST /api/onboarding
  *
- * Receives form submissions from the Allbuild onboarding modal and forwards
- * them to sales@massapro.com. Tries multiple email relay services in order:
- *   1. Web3Forms (primary — handles bot protection better than FormSubmit)
- *   2. FormSubmit.co (fallback)
+ * Receives form submissions from the Allbuild onboarding modal.
  *
- * Both are free, no-API-key email relay services. To make Web3Forms work,
- * the owner must do a one-time activation: the first submission triggers
- * an activation email to sales@massapro.com — click the link to confirm.
+ * If Google integration is configured (GOOGLE_REFRESH_TOKEN is set):
+ *   1. Creates a Google Calendar event with Google Meet (calendar owned by sales@massapro.com)
+ *   2. Sends a confirmation email from sales@massapro.com to the founder via Gmail
+ *   3. Google also auto-sends a calendar invite to the founder's email
+ *   4. Returns the Meet link to the client
  *
- * If both relays fail (e.g. network/bot block), we return the formatted
- * email body so the client can fall back to a mailto: link.
+ * If Google is NOT configured, falls back to FormSubmit.co (free email relay).
+ * If FormSubmit is blocked, falls back to a mailto: link.
  *
  * Expected JSON body:
  * {
- *   firstName: string,
- *   lastName: string,
- *   email: string,
- *   businessUrl: string,
- *   date: string (ISO date — yyyy-mm-dd),
- *   slot: string (the UK-time slot label, e.g. "09:00–11:00 UK"),
- *   slotLocalLabel: string (the user's local-time equivalent label)
+ *   firstName, lastName, email, businessUrl,
+ *   date (yyyy-mm-dd),
+ *   ukStartHour (9|11|14|15), ukEndHour (11|13|16|17),
+ *   ukSlotLabel ("09:00–11:00 UK"),
+ *   slotLocalLabel ("10:00–12:00")
  * }
  */
 
-// Web3Forms access key — this is a public key tied to the destination email.
-// To get one for sales@massapro.com, visit https://web3forms.com and enter
-// sales@massapro.com — they'll send an activation email and give you a key.
-// For now we use the FormSubmit endpoint as the primary, with mailto fallback.
 const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/sales@massapro.com";
 
 export async function POST(req: Request) {
@@ -38,9 +32,9 @@ export async function POST(req: Request) {
     const body = await req.json();
 
     // Basic server-side validation
-    const required = ["firstName", "lastName", "email", "date", "slot"];
+    const required = ["firstName", "lastName", "email", "date", "ukStartHour", "ukEndHour", "ukSlotLabel"];
     for (const field of required) {
-      if (!body?.[field] || String(body[field]).trim() === "") {
+      if (body?.[field] === undefined || String(body[field]).trim() === "") {
         return NextResponse.json(
           { ok: false, error: `Missing required field: ${field}` },
           { status: 400 }
@@ -57,78 +51,114 @@ export async function POST(req: Request) {
       );
     }
 
-    // Build a readable email body
-    const dateObj = new Date(body.date + "T00:00:00");
-    const dateDisplay = dateObj.toLocaleDateString("en-GB", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+    const booking = {
+      firstName: body.firstName.trim(),
+      lastName: body.lastName.trim(),
+      email: body.email.trim(),
+      businessUrl: body.businessUrl?.trim() || "",
+      date: body.date,
+      ukStartHour: Number(body.ukStartHour),
+      ukEndHour: Number(body.ukEndHour),
+      ukSlotLabel: body.ukSlotLabel,
+      userLocalLabel: body.slotLocalLabel || "",
+    };
+
+    // ================================================================
+    // PATH 1: Google integration (calendar event + Gmail confirmation)
+    // ================================================================
+    if (isGoogleConfigured()) {
+      try {
+        const { event, meetLink } = await createCalendarEventWithMeet(booking);
+
+        try {
+          await sendConfirmationEmail(booking, meetLink, event.htmlLink);
+        } catch (emailErr) {
+          // Calendar event was created (and Google already sent the invite
+          // via sendUpdates: 'all'), so the founder still gets the calendar
+          // invite. The custom confirmation email is a bonus — log and continue.
+          console.error("Gmail send failed (calendar invite still sent):", emailErr);
+        }
+
+        return NextResponse.json({
+          ok: true,
+          provider: "google",
+          meetLink,
+          calendarLink: event.htmlLink,
+          eventId: event.id,
+          message: "Calendar event created + confirmation email sent.",
+        });
+      } catch (googleErr) {
+        console.error("Google integration failed, falling back:", googleErr);
+        // Fall through to FormSubmit fallback
+      }
+    }
+
+    // ================================================================
+    // PATH 2: FormSubmit.co fallback (no Google configured, or Google failed)
+    // ================================================================
+    const submissionSummary = `New Allbuild onboarding: ${booking.firstName} ${booking.lastName} — ${booking.ukSlotLabel}`;
+    const dateDisplay = new Date(booking.date + "T00:00:00").toLocaleDateString("en-GB", {
+      weekday: "long", year: "numeric", month: "long", day: "numeric",
     });
-
-    const submissionSummary = `New Allbuild onboarding: ${body.firstName} ${body.lastName} — ${body.slot}`;
-
     const emailBody = `
 NEW ONBOARDING REQUEST — Allbuild
 
 PERSONAL DETAILS
 ────────────────
-First name:  ${body.firstName}
-Last name:   ${body.lastName}
-Email:       ${body.email}
-Business URL: ${body.businessUrl || "(not provided)"}
+First name:  ${booking.firstName}
+Last name:   ${booking.lastName}
+Email:       ${booking.email}
+Business URL: ${booking.businessUrl || "(not provided)"}
 
 BOOKED SLOT
 ────────────────
 Date:           ${dateDisplay}
-UK time slot:   ${body.slot}
-User local time: ${body.slotLocalLabel || "(not provided)"}
+UK time slot:   ${booking.ukSlotLabel}
+User local time: ${booking.userLocalLabel}
 
 ────────────────
 Submitted: ${new Date().toISOString()}
 Source:    Allbuild landing page
 `;
 
-    // Try FormSubmit.co
     try {
       const response = await fetch(FORMSUBMIT_ENDPOINT, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           _subject: submissionSummary,
           _template: "table",
           _captcha: "false",
           message: emailBody,
-          "First name": body.firstName,
-          "Last name": body.lastName,
-          Email: body.email,
-          "Business URL": body.businessUrl || "(not provided)",
+          "First name": booking.firstName,
+          "Last name": booking.lastName,
+          Email: booking.email,
+          "Business URL": booking.businessUrl || "(not provided)",
           Date: dateDisplay,
-          "UK time slot": body.slot,
-          "User local time": body.slotLocalLabel || "(not provided)",
+          "UK time slot": booking.ukSlotLabel,
+          "User local time": booking.userLocalLabel,
         }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        return NextResponse.json({ ok: true, data });
+        return NextResponse.json({ ok: true, provider: "formsubmit", data });
       }
       console.error("FormSubmit error:", response.status);
     } catch (err) {
       console.error("FormSubmit fetch failed:", err);
     }
 
-    // If we get here, both relays failed. Return a mailto fallback so the
-    // client can open the user's email client with the prefilled message.
+    // ================================================================
+    // PATH 3: mailto: fallback (both above failed)
+    // ================================================================
     const mailtoSubject = encodeURIComponent(submissionSummary);
     const mailtoBody = encodeURIComponent(emailBody);
     const mailtoLink = `mailto:sales@massapro.com?subject=${mailtoSubject}&body=${mailtoBody}`;
 
     return NextResponse.json({
       ok: true,
+      provider: "mailto",
       fallback: "mailto",
       mailtoLink,
       message: "Submission recorded. Opening your email client to complete sending.",

@@ -95,6 +95,55 @@ A `vercel.json` is included in this repo with sensible defaults (framework = Nex
 
 After deploying, every push to `main` triggers a new production deploy automatically (once the Vercel × GitHub integration is connected).
 
+## 🔌 Google Calendar + Gmail integration (one-time setup)
+
+The onboarding form creates a Google Calendar event with an auto-generated Google Meet link and sends a confirmation email from `sales@massapro.com` via Gmail. To enable this, do the one-time setup below. (If you skip it, the form falls back to a mailto: link — it still works, just less automated.)
+
+### Step 1 — Register redirect URIs in Google Cloud Console
+
+1. Go to https://console.cloud.google.com/apis/credentials
+2. Click your OAuth 2.0 Client ID (the one starting with `271496681716-...`)
+3. Under **Authorized redirect URIs**, add BOTH:
+   - `http://localhost:3000/api/google-callback` (for local dev)
+   - `https://allbuild.vercel.app/api/google-callback` (for production — replace with your actual Vercel URL)
+4. Save
+
+### Step 2 — Add credentials to `.env.local` (already done in this repo)
+
+```env
+GOOGLE_CLIENT_ID=271496681716-0esrh5lekt6b1srd4lo1ap5ih9jcm04n.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=GOCSPX-...
+GOOGLE_REDIRECT_URI=http://localhost:3000/api/google-callback
+GOOGLE_REFRESH_TOKEN=                  # capture in Step 3
+GOOGLE_CALENDAR_ID=sales@massapro.com
+```
+
+### Step 3 — Complete the one-time OAuth flow (captures the refresh token)
+
+1. Start the dev server: `bun run dev`
+2. Open http://localhost:3000/api/google-auth in your browser
+3. Sign in as `sales@massapro.com` and grant Calendar + Gmail permissions
+4. Google redirects to `/api/google-callback` — the page displays your **refresh token**
+5. Copy the refresh token and paste it into `.env.local` after `GOOGLE_REFRESH_TOKEN=`
+6. Restart the dev server
+
+From now on, every form submission will:
+- Create a 30-minute Google Calendar event with Google Meet (owned by sales@massapro.com)
+- Auto-send a calendar invite to the founder's email
+- Send a custom HTML confirmation email from sales@massapro.com to the founder
+- Return the Meet link to the modal so it's displayed in the success state
+
+### Step 4 — Add the same env vars to Vercel
+
+In your Vercel project dashboard → **Settings → Environment Variables**, add:
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_CLIENT_SECRET`
+- `GOOGLE_REDIRECT_URI` (use your production URL: `https://allbuild.vercel.app/api/google-callback`)
+- `GOOGLE_REFRESH_TOKEN` (the one you captured in Step 3)
+- `GOOGLE_CALENDAR_ID` (`sales@massapro.com`)
+
+Trigger a redeploy and the production form will use Google Calendar + Gmail directly.
+
 ## 🗂 Project structure
 
 ```
