@@ -174,9 +174,9 @@ function Avatar({ src, alt, size = 36, ring = '#FFFFFF', className = '' }: { src
 // ====================================================================
 
 function Logo({ size = 32, className = '' }: { size?: number; className?: string }) {
-  // PNG is 784×644 → aspect ratio ~1.217:1 (width:height)
-  // At `size` px tall, width = size * 1.217
-  const width = Math.round(size * (784 / 644))
+  // PNG is 2981×2688 → aspect ratio ~1.109:1 (width:height)
+  // At `size` px tall, width = size * 1.109
+  const width = Math.round(size * (2981 / 2688))
   return (
     <img
       src="/allbuild-logo.png"
@@ -919,41 +919,38 @@ function Footer() {
   return (
     <footer className="bg-plum text-blush mt-auto">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-14">
-        <div className="grid md:grid-cols-4 gap-10">
-          <div className="md:col-span-2">
+        <div className="grid md:grid-cols-3 gap-10 items-start">
+          {/* Left — logo + description (bottom-left aligned) */}
+          <div>
             <div className="flex items-center gap-2.5 mb-4">
               <Logo size={32} />
               <span className="font-display text-xl font-medium">Allbuild</span>
             </div>
-            <p className="text-sm text-blush/70 max-w-md leading-relaxed mb-4">
+            <p className="text-sm text-blush/70 max-w-md leading-relaxed">
               We believe small business owners shouldn't have to choose between the work they love and the work that pays for it. So we built a crew that handles the busywork — so they can do the human work.
             </p>
+          </div>
+
+          {/* Center — founder avatars + "200+ founders" text (horizontally centered, top-aligned) */}
+          <div className="justify-self-center">
             <div className="flex items-center gap-3">
               <div className="flex -space-x-2">
                 {STATS_FOUNDERS.slice(0, 5).map((f, i) => (
                   <Avatar key={i} src={f.img} alt={f.name} size={28} ring="#2D1B2E" />
                 ))}
               </div>
-              <span className="text-xs text-blush/60">200+ European founders on board</span>
+              <span className="text-xs text-blush/60 whitespace-nowrap">200+ European founders on board</span>
             </div>
           </div>
-          <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-peach-2 mb-3">The Golden Circle</div>
+
+          {/* Right — MassaPro heading + links (bottom-right aligned) */}
+          <div className="justify-self-end text-right">
+            <a href="https://massapro.com" target="_blank" rel="noopener noreferrer" className="block text-xs font-bold uppercase tracking-wider text-peach-2 mb-3 hover:text-blush transition-colors">MassaPro</a>
             <ul className="space-y-2 text-sm text-blush/80">
-              <li><a href="#why" className="hover:text-peach-2 transition-colors">Why we exist</a></li>
-              <li><a href="#who" className="hover:text-peach-2 transition-colors">Who we serve</a></li>
-              <li><a href="#how" className="hover:text-peach-2 transition-colors">How we work</a></li>
-              <li><a href="#flow" className="hover:text-peach-2 transition-colors">The flow</a></li>
-              <li><a href="#what" className="hover:text-peach-2 transition-colors">What we built</a></li>
-            </ul>
-          </div>
-          <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-peach-2 mb-3">Company</div>
-            <ul className="space-y-2 text-sm text-blush/80">
+              <li><a href="https://massapro.com" target="_blank" rel="noopener noreferrer" className="hover:text-peach-2 transition-colors">massapro.com</a></li>
               <li><a href="#founders" className="hover:text-peach-2 transition-colors">Founders</a></li>
               <li><a href="#pricing" className="hover:text-peach-2 transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-peach-2 transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-peach-2 transition-colors">Privacy</a></li>
+              <li><a href="mailto:sales@massapro.com" className="hover:text-peach-2 transition-colors">Contact</a></li>
             </ul>
           </div>
         </div>
